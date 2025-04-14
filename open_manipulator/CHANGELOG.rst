@@ -2,16 +2,25 @@
 Changelog for package open_manipulator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-3.0.1 (2025-04-11)
+3.2.1 (2025-04-11)
 ------------------
-* Modified Update Rate
-* Docker support
-* Contributors: Wonho Yun, Woojin Wie
+* Updated link mesh files in the OM-Y leader mesh directory
+* Contributors: Woojin Wie
+
+3.2.0 (2025-04-09)
+------------------
+* Updated OM-Y Follower for improved joint initialization and action-based ROS2 control
+* Contributors: Woojin Wie
+
+3.1.0 (2025-03-17)
+------------------
+* Integrate OM-X, OM-Y, and OM-Teleoperation with Jazzy support and Gazebo Harmonic compatibility
+* Contributors: Sungho Woo
 
 3.0.0 (2024-12-06)
 ------------------
 * Refactored OM-X for compatibility with MoveIt 2
-* Contributors: Wonho Yun, Sungho Woo
+* Contributors: Wonho Yoon, Sungho Woo
 
 2.3.0 (2021-10-06)
 ------------------
