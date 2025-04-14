@@ -1,0 +1,12 @@
+Source: ros-humble-open-manipulator-x-gui
+Section: misc
+Priority: optional
+Maintainer: Pyo <pyo@robotis.com>
+Build-Depends: debhelper (>= 9.0.0), libqt5core5a, libqt5gui5, qt5-qmake, qtbase5-dev, ros-humble-ament-cmake, ros-humble-eigen3-cmake-module, ros-humble-geometry-msgs, ros-humble-moveit-core, ros-humble-moveit-msgs, ros-humble-moveit-ros-planning, ros-humble-moveit-ros-planning-interface, ros-humble-rclcpp, ros-humble-sensor-msgs, ros-humble-std-msgs, ros-humble-ros-workspace
+Homepage: http://wiki.ros.org/open_manipulator
+Standards-Version: 3.9.2
+
+Package: ros-humble-open-manipulator-x-gui
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libqt5core5a, libqt5gui5, qt5-qmake, qtbase5-dev, ros-humble-eigen3-cmake-module, ros-humble-geometry-msgs, ros-humble-moveit-core, ros-humble-moveit-msgs, ros-humble-moveit-ros-planning, ros-humble-moveit-ros-planning-interface, ros-humble-rclcpp, ros-humble-sensor-msgs, ros-humble-std-msgs, ros-humble-ros-workspace
+Description: The OpenMANIPULATOR-X GUI ROS 2 package enables users to explore Joint Space, Task Space, and even work with the Task Constructor functionality.
