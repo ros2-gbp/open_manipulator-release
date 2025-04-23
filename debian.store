@@ -1,1 +1,1 @@
-{"base": "0399f39", "parent": "debian/rolling/open_manipulator_teleop", "previous": "b79a851", "trim": "", "trimbase": ""}
+{"base": "235ec8eb7976", "parent": "debian/kilted/open_manipulator_teleop", "previous": "12b45f33b356", "trim": "", "trimbase": ""}
