@@ -1,1 +1,1 @@
-{"base": "3c388d6", "parent": "debian/rolling/open_manipulator_moveit_config", "previous": "2e10de8", "trim": "", "trimbase": ""}
+{"base": "e524eb4ab8f9", "parent": "debian/kilted/open_manipulator_moveit_config", "previous": "93b42fd46eb8", "trim": "", "trimbase": ""}
