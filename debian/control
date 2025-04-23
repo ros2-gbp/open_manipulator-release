@@ -1,0 +1,12 @@
+Source: ros-kilted-open-manipulator-teleop
+Section: misc
+Priority: optional
+Maintainer: Pyo <pyo@robotis.com>
+Build-Depends: debhelper (>= 9.0.0), ros-kilted-ament-cmake, ros-kilted-rclcpp, ros-kilted-rclpy, ros-kilted-ros-workspace
+Homepage: http://wiki.ros.org/open_manipulator
+Standards-Version: 3.9.2
+
+Package: ros-kilted-open-manipulator-teleop
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kilted-rclcpp, ros-kilted-rclpy, ros-kilted-ros-workspace
+Description: OpenMANIPULATOR teleop ROS 2 package.
