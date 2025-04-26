@@ -2,10 +2,8 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>open_manipulator_bringup</name>
-  <version>3.2.1</version>
-  <description>
-    OpenMANIPULATOR bringup ROS 2 package.
-  </description>
+  <version>3.2.2</version>
+  <description>OpenMANIPULATOR bringup ROS 2 package.</description>
   <maintainer email="pyo@robotis.com">Pyo</maintainer>
   <license>Apache 2.0</license>
   <url type="website">http://wiki.ros.org/open_manipulator</url>
@@ -14,7 +12,8 @@
   <author email="hjkim@robotis.com">Hye-Jong KIM</author>
   <author email="wsh@robotis.com">Sungho Woo</author>
   <author email="ywh@robotis.com">Wonho Yun</author>
-  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclpy</depend>
+  <depend>dynamixel_hardware_interface</depend>
   <depend>ros_gz_bridge</depend>
   <depend>ros_gz_sim</depend>
   <depend>ros_gz_image</depend>
@@ -27,6 +26,6 @@
   <exec_depend>open_manipulator_description</exec_depend>
   <exec_depend>xacro</exec_depend>
   <export>
-    <build_type>ament_cmake</build_type>
+    <build_type>ament_python</build_type>
   </export>
 </package>
