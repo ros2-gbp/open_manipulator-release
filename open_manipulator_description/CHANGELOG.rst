@@ -2,6 +2,11 @@
 Changelog for package open_manipulator_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+3.2.2 (2025-04-17)
+------------------
+* Streamlined Ros2 control config files and Handle lint errors
+* Contributors: Woojin Wie
+
 3.2.1 (2025-04-11)
 ------------------
 * Updated link mesh files in the OM-Y leader mesh directory
