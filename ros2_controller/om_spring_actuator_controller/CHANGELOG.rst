@@ -2,6 +2,11 @@
 Changelog for package om_spring_actuator_controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+3.2.2 (2025-04-17)
+------------------
+* Handle lint errors
+* Contributors: Woojin Wie
+
 3.2.1 (2025-04-11)
 ------------------
 * None
