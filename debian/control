@@ -1,0 +1,12 @@
+Source: ros-rolling-open-manipulator-bringup
+Section: misc
+Priority: optional
+Maintainer: Pyo <pyo@robotis.com>
+Build-Depends: debhelper (>= 9.0.0), ros-rolling-dynamixel-hardware-interface, ros-rolling-rclpy, ros-rolling-ros-gz-bridge, ros-rolling-ros-gz-image, ros-rolling-ros-gz-sim, ros-rolling-ros-workspace, python3-all, python3-setuptools, dh-python
+Homepage: http://wiki.ros.org/open_manipulator
+Standards-Version: 3.9.2
+
+Package: ros-rolling-open-manipulator-bringup
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, ros-rolling-dynamixel-hardware-interface, ros-rolling-gz-ros2-control, ros-rolling-open-manipulator-description, ros-rolling-rclpy, ros-rolling-robot-state-publisher, ros-rolling-ros-gz-bridge, ros-rolling-ros-gz-image, ros-rolling-ros-gz-sim, ros-rolling-ros2-control, ros-rolling-ros2-controllers, ros-rolling-rviz2, ros-rolling-xacro, ros-rolling-ros-workspace
+Description: OpenMANIPULATOR bringup ROS 2 package.
