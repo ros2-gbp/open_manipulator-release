@@ -1,3 +1,37 @@
+## open_manipulator (rolling) - 4.0.0-1
+
+The packages in the `open_manipulator` repository were released into the `rolling` distro by running `/usr/bin/bloom-release open_manipulator -t rolling -r rolling --edit` on `Fri, 20 Jun 2025 02:00:30 -0000`
+
+These packages were released:
+- `om_gravity_compensation_controller`
+- `om_joint_trajectory_command_broadcaster`
+- `om_spring_actuator_controller`
+- `open_manipulator`
+- `open_manipulator_bringup`
+- `open_manipulator_collision`
+- `open_manipulator_description`
+- `open_manipulator_gui`
+- `open_manipulator_moveit_config`
+- `open_manipulator_playground`
+- `open_manipulator_teleop`
+
+Version of package(s) in repository `open_manipulator`:
+
+- upstream repository: https://github.com/ROBOTIS-GIT/open_manipulator.git
+- release repository: https://github.com/ros2-gbp/open_manipulator-release.git
+- rosdistro version: `3.3.0-1`
+- old version: `3.3.0-1`
+- new version: `4.0.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.12.0`
+- catkin_pkg version: `1.0.0`
+- rosdep version: `0.25.1`
+- rosdistro version: `1.0.1`
+- vcstools version: `0.1.42`
+
+
 ## open_manipulator (jazzy) - 4.0.0-1
 
 The packages in the `open_manipulator` repository were released into the `jazzy` distro by running `/usr/bin/bloom-release open_manipulator -t jazzy -r jazzy --edit` on `Fri, 20 Jun 2025 01:44:52 -0000`
