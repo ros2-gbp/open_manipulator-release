@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// Author: Ryan Shim, Sungho Woo, Wonho Yoon, Woojin Wie
+// Author: Ryan Shim, Sungho Woo, Wonho Yun, Woojin Wie
 
-#ifndef OPEN_MANIPULATOR_Y_GUI__MAIN_WINDOW_HPP_
-#define OPEN_MANIPULATOR_Y_GUI__MAIN_WINDOW_HPP_
+#ifndef OMY_3M_GUI__MAIN_WINDOW_HPP_
+#define OMY_3M_GUI__MAIN_WINDOW_HPP_
 
 #include <QMainWindow>
 #include <QTimer>
@@ -32,11 +32,11 @@
 #include <sstream>
 #include <string>
 
-#include "open_manipulator_y_gui/qnode.hpp"
-#include "open_manipulator_y_gui/ui_y_main_window.h"
+#include "omy_3m_gui/qnode.hpp"
+#include "omy_3m_gui/ui_omy_3m_main_window.h"
 
 
-namespace open_manipulator_y_gui
+namespace omy_3m_gui
 {
 
 class MainWindow : public QMainWindow
@@ -53,13 +53,10 @@ public Q_SLOTS:
   void on_btn_timer_start_clicked(void);
   void on_btn_init_pose_clicked(void);
   void on_btn_home_pose_clicked(void);
-  void on_btn_gripper_open_clicked(void);
-  void on_btn_gripper_close_clicked(void);
   void on_btn_read_joint_angle_clicked(void);
   void on_btn_send_joint_angle_clicked(void);
   void on_btn_read_kinematic_pose_clicked(void);
   void on_btn_send_kinematic_pose_clicked(void);
-  void on_btn_set_gripper_clicked(void);
   void on_btn_save_pose_clicked(void);
   void on_btn_play_clicked(void);
   void on_btn_reset_task_clicked(void);
@@ -75,6 +72,6 @@ private:
   std::string csv_file_path_;
 };
 
-}  // namespace open_manipulator_y_gui
+}  // namespace omy_3m_gui
 
-#endif  // OPEN_MANIPULATOR_Y_GUI__MAIN_WINDOW_HPP_
+#endif  // OMY_3M_GUI__MAIN_WINDOW_HPP_
