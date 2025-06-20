@@ -12,20 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// Author: Ryan Shim, Sungho Woo, Wonho Yoon, Woojin Wie
+// Author: Ryan Shim, Sungho Woo, Wonho Yun, Woojin Wie
 
 #include <QtGui>
 #include <QApplication>
-#include "../include/open_manipulator_y_gui/main_window.hpp"
-#include "open_manipulator_y_gui/qnode.hpp"
+#include "../include/omx_gui/main_window.hpp"
+#include "omx_gui/qnode.hpp"
 
 
 int main(int argc, char ** argv)
 {
   QApplication app(argc, argv);
-  open_manipulator_y_gui::MainWindow w(argc, argv);
+  omx_gui::MainWindow w(argc, argv);
   w.show();
   app.connect(&app, SIGNAL(lastWindowClosed()), &app, SLOT(quit()));
+
   int result = app.exec();
   return result;
 }
