@@ -1,8 +1,0 @@
-ros-jazzy-open-manipulator-collision (3.3.0-1bookworm) bookworm; urgency=high
-
-  * Added self-collision functionality to OMY Follower
-  * Contributors: Sungho Woo
-
- -- Pyo <pyo@robotis.com>  Mon, 09 Jun 2025 15:00:00 -0000
-
-
