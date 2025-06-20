@@ -19,12 +19,11 @@
 import select
 import sys
 import termios
+import threading
 import time
 import tty
 
-from control_msgs.action import GripperCommand
 import rclpy
-from rclpy.action import ActionClient
 from rclpy.node import Node
 from sensor_msgs.msg import JointState
 from trajectory_msgs.msg import JointTrajectory
@@ -39,11 +38,6 @@ class KeyboardController(Node):
         # Publisher for arm joint control
         self.arm_publisher = self.create_publisher(
             JointTrajectory, '/arm_controller/joint_trajectory', 10
-        )
-
-        # Action client for GripperCommand
-        self.gripper_client = ActionClient(
-            self, GripperCommand, '/gripper_controller/gripper_cmd'
         )
 
         # Subscriber for joint states
@@ -61,14 +55,9 @@ class KeyboardController(Node):
             'joint6',
         ]
 
-        self.gripper_position = 0.0
-        self.gripper_max = 1.1
-        self.gripper_min = 0.0
-
         self.joint_received = False
 
         self.max_delta = 0.02
-        self.gripper_delta = 0.1
         self.last_command_time = time.time()
         self.command_interval = 0.02
 
@@ -83,14 +72,9 @@ class KeyboardController(Node):
                 index = msg.name.index(joint)
                 self.arm_joint_positions[i] = msg.position[index]
 
-        if 'rh_r1_joint' in msg.name:
-            index = msg.name.index('rh_r1_joint')
-            self.gripper_position = msg.position[index]
-
         self.joint_received = True
         self.get_logger().info(
             f'Received joint states: {self.arm_joint_positions}, '
-            f'Gripper: {self.gripper_position}'
         )
 
     def get_key(self, timeout=0.01):
@@ -115,16 +99,6 @@ class KeyboardController(Node):
         self.arm_publisher.publish(arm_msg)
         self.get_logger().info(f'Arm command sent: {self.arm_joint_positions}')
 
-    def send_gripper_command(self):
-        goal_msg = GripperCommand.Goal()
-        goal_msg.command.position = self.gripper_position
-        goal_msg.command.max_effort = 10.0
-
-        self.get_logger().info(f'Sending gripper command: {goal_msg.command.position}')
-        self.gripper_client.wait_for_server()
-        send_goal_future = self.gripper_client.send_goal_async(goal_msg)
-        rclpy.spin_until_future_complete(self, send_goal_future)
-
     def run(self):
         while not self.joint_received and rclpy.ok() and self.running:
             self.get_logger().info('Waiting for initial joint states...')
@@ -132,8 +106,7 @@ class KeyboardController(Node):
 
         self.get_logger().info('Ready to receive keyboard input!')
         self.get_logger().info(
-            'Use 1/q, 2/w, 3/e, 4/r, 5/t, 6/y for joints 1-6, o/p for gripper. '
-            'Press ESC to exit.'
+            'Use 1/q, 2/w, 3/e, 4/r, 5/t, 6/y for joints 1-6. Press ESC to exit.'
         )
 
         try:
@@ -208,21 +181,7 @@ class KeyboardController(Node):
                             self.arm_joint_positions[5] - self.max_delta, -3.14
                         )
                         self.arm_joint_positions[5] = new_pos
-                    elif key == 'o':  # Open gripper
-                        new_pos = max(
-                            self.gripper_position - self.gripper_delta, self.gripper_min
-                        )
-                        self.gripper_position = new_pos
-                        self.send_gripper_command()
-                    elif key == 'p':  # Close gripper
-                        new_pos = min(
-                            self.gripper_position + self.gripper_delta, self.gripper_max
-                        )
-                        self.gripper_position = new_pos
-                        self.send_gripper_command()
 
-                    # Update joint 6 to follow joint 5
-                    self.arm_joint_positions[5] = self.arm_joint_positions[4]
                     self.send_arm_command()
                     self.last_command_time = current_time
 
@@ -234,12 +193,16 @@ def main():
     rclpy.init()
     node = KeyboardController()
 
+    thread = threading.Thread(target=node.run)
+    thread.start()
+
     try:
-        while rclpy.ok():
-            rclpy.spin_once(node)
+        while thread.is_alive():
+            time.sleep(0.1)
     except KeyboardInterrupt:
         print('\nCtrl+C detected. Shutting down...')
         node.running = False
+        thread.join()
 
     node.destroy_node()
     rclpy.shutdown()
