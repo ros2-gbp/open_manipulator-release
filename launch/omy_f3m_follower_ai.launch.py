@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# Author: Wonho Yoon, Sungho Woo
+# Author: Wonho Yun, Sungho Woo, Woojin Wie
 
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
@@ -34,7 +34,7 @@ def generate_launch_description():
     # Declare launch arguments
     declared_arguments = [
         DeclareLaunchArgument(
-            'start_rviz', default_value='true', description='Whether to execute rviz2'
+            'start_rviz', default_value='false', description='Whether to execute rviz2'
         ),
         DeclareLaunchArgument(
             'prefix',
@@ -57,14 +57,9 @@ def generate_launch_description():
             description='Enable fake sensor commands.',
         ),
         DeclareLaunchArgument(
-            'port_name',
-            default_value='/dev/ttyUSB0',
-            description='Port name for hardware connection.',
-        ),
-        DeclareLaunchArgument(
-            'run_init_position',
-            default_value='true',
-            description='Run joint_trajectory_executor after launch',
+            'init_position',
+            default_value='false',
+            description='Whether to launch the init_position node',
         ),
     ]
 
@@ -74,9 +69,7 @@ def generate_launch_description():
     use_sim = LaunchConfiguration('use_sim')
     use_fake_hardware = LaunchConfiguration('use_fake_hardware')
     fake_sensor_commands = LaunchConfiguration('fake_sensor_commands')
-    port_name = LaunchConfiguration('port_name')
-    run_init_position = LaunchConfiguration('run_init_position')
-    trajectory_params_file = LaunchConfiguration('trajectory_params_file')
+    init_position = LaunchConfiguration('init_position')
 
     # Generate URDF file using xacro
     urdf_file = Command([
@@ -85,8 +78,8 @@ def generate_launch_description():
         PathJoinSubstitution([
             FindPackageShare('open_manipulator_description'),
             'urdf',
-            'om_x',
-            'open_manipulator_x.urdf.xacro',
+            'omy_f3m',
+            'omy_f3m.urdf.xacro',
         ]),
         ' ',
         'prefix:=',
@@ -100,18 +93,13 @@ def generate_launch_description():
         ' ',
         'fake_sensor_commands:=',
         fake_sensor_commands,
-        ' ',
-        'port_name:=',
-        port_name,
     ])
-
-    robot_description = {'robot_description': urdf_file}
 
     # Paths for configuration files
     controller_manager_config = PathJoinSubstitution([
         FindPackageShare('open_manipulator_bringup'),
         'config',
-        'om_x',
+        'omy_f3m_follower_ai',
         'hardware_controller_manager.yaml',
     ])
 
@@ -124,7 +112,7 @@ def generate_launch_description():
     trajectory_params_file = PathJoinSubstitution([
         FindPackageShare('open_manipulator_bringup'),
         'config',
-        'om_x',
+        'omy_f3m_follower_ai',
         'initial_positions.yaml',
     ])
 
@@ -132,45 +120,44 @@ def generate_launch_description():
     control_node = Node(
         package='controller_manager',
         executable='ros2_control_node',
-        parameters=[robot_description, controller_manager_config],
+        parameters=[{'robot_description': urdf_file}, controller_manager_config],
         output='both',
         condition=UnlessCondition(use_sim),
+        remappings=[('/arm_controller/joint_trajectory', '/leader/joint_trajectory')],
+    )
+
+    robot_controller_spawner = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=[
+            'arm_controller',
+            'joint_state_broadcaster',
+        ],
+        output='both',
+        parameters=[{'robot_description': urdf_file}],
     )
 
     robot_state_publisher_node = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
-        parameters=[robot_description, {'use_sim_time': use_sim}],
-        output='screen',
+        parameters=[{'robot_description': urdf_file, 'use_sim_time': use_sim}],
+        output='both',
+    )
+
+    joint_trajectory_executor = Node(
+        package='open_manipulator_bringup',
+        executable='joint_trajectory_executor',
+        parameters=[trajectory_params_file],
+        output='both',
+        condition=IfCondition(init_position),
     )
 
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',
         arguments=['-d', rviz_config_file],
-        output='screen',
+        output='both',
         condition=IfCondition(start_rviz),
-    )
-
-    # Controller spawner node
-    robot_controller_spawner = Node(
-        package='controller_manager',
-        executable='spawner',
-        arguments=[
-            'arm_controller',
-            'gripper_controller',
-            'joint_state_broadcaster',
-        ],
-        parameters=[robot_description],
-    )
-
-    # Joint trajectory executor node
-    joint_trajectory_executor = Node(
-        package='open_manipulator_bringup',
-        executable='joint_trajectory_executor',
-        parameters=[trajectory_params_file],
-        output='screen',
-        condition=IfCondition(run_init_position),
     )
 
     # Event handlers to ensure order of execution

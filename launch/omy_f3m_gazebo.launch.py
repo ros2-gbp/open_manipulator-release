@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# Author: Wonho Yoon, Sungho Woo
+# Author: Wonho Yun, Sungho Woo
 
 import os
 from pathlib import Path
@@ -22,7 +22,6 @@ from pathlib import Path
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
-from launch.actions import ExecuteProcess
 from launch.actions import IncludeLaunchDescription
 from launch.actions import RegisterEventHandler
 from launch.actions import SetEnvironmentVariable
@@ -33,24 +32,8 @@ from launch_ros.actions import Node
 import xacro
 
 
-def get_robot_model():
-    robot_model = os.getenv('ROBOT_MODEL', 'om_y')
-    if robot_model not in ['om_x', 'om_y', 'om_y_follower']:
-        raise ValueError(f'Invalid ROBOT_MODEL: {robot_model}')
-    return robot_model
-
-
 def generate_launch_description():
     # Launch Arguments
-    robot_model = get_robot_model()
-
-    if robot_model == 'om_x':
-        urdf_file = 'open_manipulator_x'
-        urdf_folder = 'om_x'
-    else:
-        urdf_file = 'open_manipulator_y'
-        urdf_folder = 'om_y'
-
     open_manipulator_description_path = os.path.join(
         get_package_share_directory('open_manipulator_description')
     )
@@ -87,11 +70,11 @@ def generate_launch_description():
     xacro_file = os.path.join(
         open_manipulator_description_path,
         'urdf',
-        urdf_folder,
-        f'{urdf_file}.urdf.xacro',
+        'omy_f3m',
+        'omy_f3m.urdf.xacro',
     )
 
-    doc = xacro.process_file(xacro_file, mappings={'use_sim': 'true'})
+    doc = xacro.process_file(xacro_file, mappings={'use_sim': 'true', 'config_type': 'omy_f3m'})
 
     robot_desc = doc.toprettyxml(indent='  ')
 
@@ -124,46 +107,36 @@ def generate_launch_description():
             '-Y',
             '0.0',
             '-name',
-            'om',
+            'omy_f3m',
             '-allow_renaming',
             'true-use_sim',
             'true',
         ],
     )
 
-    load_joint_state_controller = ExecuteProcess(
-        cmd=[
-            'ros2',
-            'control',
-            'load_controller',
-            '--set-state',
-            'active',
+    # Controller spawner nodes
+    joint_state_broadcaster_spawner = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=[
             'joint_state_broadcaster',
+            '--controller-manager',
+            '/controller_manager',
         ],
         output='screen',
     )
 
-    load_arm_controller = ExecuteProcess(
-        cmd=[
-            'ros2',
-            'control',
-            'load_controller',
-            '--set-state',
-            'active',
-            'arm_controller',
-        ],
+    arm_controller_spawner = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=['arm_controller'],
         output='screen',
     )
 
-    load_gripper_controller = ExecuteProcess(
-        cmd=[
-            'ros2',
-            'control',
-            'load_controller',
-            '--set-state',
-            'active',
-            'gripper_controller',
-        ],
+    gripper_controller_spawner = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=['gripper_controller'],
         output='screen',
     )
 
@@ -190,13 +163,19 @@ def generate_launch_description():
         RegisterEventHandler(
             event_handler=OnProcessExit(
                 target_action=gz_spawn_entity,
-                on_exit=[load_joint_state_controller],
+                on_exit=[joint_state_broadcaster_spawner],
             )
         ),
         RegisterEventHandler(
             event_handler=OnProcessExit(
-                target_action=load_joint_state_controller,
-                on_exit=[load_arm_controller, load_gripper_controller],
+                target_action=joint_state_broadcaster_spawner,
+                on_exit=[arm_controller_spawner],
+            )
+        ),
+        RegisterEventHandler(
+            event_handler=OnProcessExit(
+                target_action=arm_controller_spawner,
+                on_exit=[gripper_controller_spawner],
             )
         ),
         bridge,
