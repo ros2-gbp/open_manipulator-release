@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-   <xacro:macro name="open_manipulator_y_leader" params="prefix">
-      <xacro:property name="meshes_file_direction" value="package://open_manipulator_description/meshes/om_y_leader/" />
+   <xacro:macro name="omy_l100" params="prefix">
+      <xacro:property name="meshes_file_direction" value="package://open_manipulator_description/meshes/omy_l100/" />
       <link name="${prefix}link0">
          <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
                <mesh filename="${meshes_file_direction}/base_unit.stl" scale="0.001 0.001 0.001" />
             </geometry>
+            <material name="grey">
+               <color rgba="0.2 0.2 0.2 1" />
+            </material>
          </visual>
          <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
@@ -34,6 +37,9 @@
             <geometry>
                <mesh filename="${meshes_file_direction}/link1.stl" scale="0.001 0.001 0.001" />
             </geometry>
+            <material name="grey">
+               <color rgba="0.2 0.2 0.2 1" />
+            </material>
          </visual>
          <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
@@ -60,6 +66,9 @@
             <geometry>
                <mesh filename="${meshes_file_direction}/link2.stl" scale="0.001 0.001 0.001" />
             </geometry>
+            <material name="grey">
+               <color rgba="0.2 0.2 0.2 1" />
+            </material>
          </visual>
          <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
@@ -86,6 +95,9 @@
             <geometry>
                <mesh filename="${meshes_file_direction}/link3.stl" scale="0.001 0.001 0.001" />
             </geometry>
+            <material name="grey">
+               <color rgba="0.2 0.2 0.2 1" />
+            </material>
          </visual>
          <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
@@ -112,6 +124,9 @@
             <geometry>
                <mesh filename="${meshes_file_direction}/link4.stl" scale="0.001 0.001 0.001" />
             </geometry>
+            <material name="grey">
+               <color rgba="0.2 0.2 0.2 1" />
+            </material>
          </visual>
          <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
@@ -138,6 +153,9 @@
             <geometry>
                <mesh filename="${meshes_file_direction}/link5.stl" scale="0.001 0.001 0.001" />
             </geometry>
+            <material name="grey">
+               <color rgba="0.2 0.2 0.2 1" />
+            </material>
          </visual>
          <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
@@ -164,6 +182,9 @@
             <geometry>
                <mesh filename="${meshes_file_direction}/link6.stl" scale="0.001 0.001 0.001" />
             </geometry>
+            <material name="grey">
+               <color rgba="0.2 0.2 0.2 1" />
+            </material>
          </visual>
          <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
@@ -190,6 +211,9 @@
             <geometry>
                <mesh filename="${meshes_file_direction}/link7.stl" scale="0.001 0.001 0.001" />
             </geometry>
+            <material name="grey">
+               <color rgba="0.2 0.2 0.2 1" />
+            </material>
          </visual>
          <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
