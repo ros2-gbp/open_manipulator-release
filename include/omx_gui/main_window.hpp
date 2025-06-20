@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// Author: Ryan Shim, Sungho Woo, Wonho Yoon, Woojin Wie
+// Author: Ryan Shim, Sungho Woo, Wonho Yun, Woojin Wie
 
-#ifndef OPEN_MANIPULATOR_X_GUI__MAIN_WINDOW_HPP_
-#define OPEN_MANIPULATOR_X_GUI__MAIN_WINDOW_HPP_
+#ifndef OMX_GUI__MAIN_WINDOW_HPP_
+#define OMX_GUI__MAIN_WINDOW_HPP_
 
 #include <QMainWindow>
 #include <QTimer>
@@ -33,10 +33,10 @@
 #include <sstream>
 #include <string>
 
-#include "open_manipulator_x_gui/qnode.hpp"
-#include "open_manipulator_x_gui/ui_x_main_window.h"
+#include "omx_gui/qnode.hpp"
+#include "omx_gui/ui_omx_main_window.h"
 
-namespace open_manipulator_x_gui
+namespace omx_gui
 {
 
 class MainWindow : public QMainWindow
@@ -76,6 +76,6 @@ private:
   std::string csv_file_path_;
 };
 
-}  // namespace open_manipulator_x_gui
+}  // namespace omx_gui
 
-#endif  // OPEN_MANIPULATOR_X_GUI__MAIN_WINDOW_HPP_
+#endif  // OMX_GUI__MAIN_WINDOW_HPP_

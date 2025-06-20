@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// Author: Ryan Shim, Sungho Woo, Wonho Yoon, Woojin Wie
+// Author: Ryan Shim, Sungho Woo, Wonho Yun, Woojin Wie
 
 #include <QMainWindow>
 #include <QWidget>
@@ -23,9 +23,9 @@
 #include <QObject>
 #include <QMessageBox>
 #include <iostream>
-#include "../include/open_manipulator_x_gui/main_window.hpp"
+#include "../include/omy_3m_gui/main_window.hpp"
 
-namespace open_manipulator_x_gui
+namespace omy_3m_gui
 {
 
 MainWindow::MainWindow(int argc, char ** argv, QWidget * parent)
@@ -33,13 +33,14 @@ MainWindow::MainWindow(int argc, char ** argv, QWidget * parent)
 {
   ui.setupUi(this);
   tableWidget = new QTableWidget(this);
-  tableWidget->setColumnCount(6);
+  tableWidget->setColumnCount(7);
   QStringList headers;
-  headers << "Joint 1" << "Joint 2" << "Joint 3" << "Joint 4" << "Gripper" << "Status";
+  headers << "Joint 1" << "Joint 2" << "Joint 3" << "Joint 4"
+          << "Joint 5" << "Joint 6" << "Status";
   tableWidget->setHorizontalHeaderLabels(headers);
   tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
-  ui.verticalLayout_19->addWidget(tableWidget);
+  ui.verticalLayout->addWidget(tableWidget);
 
   QObject::connect(ui.actionAbout_Qt, SIGNAL(triggered(bool)), qApp, SLOT(aboutQt()));
   connect(ui.tabWidget, SIGNAL(currentChanged(int)), this, SLOT(tabSelected()));
@@ -47,13 +48,10 @@ MainWindow::MainWindow(int argc, char ** argv, QWidget * parent)
 
   ui.btn_init_pose->setEnabled(false);
   ui.btn_home_pose->setEnabled(false);
-  ui.btn_gripper_open->setEnabled(false);
-  ui.btn_gripper_close->setEnabled(false);
   ui.btn_read_joint_angle->setEnabled(false);
   ui.btn_send_joint_angle->setEnabled(false);
   ui.btn_read_kinematic_pose->setEnabled(false);
   ui.btn_send_kinematic_pose->setEnabled(false);
-  ui.btn_set_gripper->setEnabled(false);
   ui.btn_save_pose->setEnabled(false);
   ui.btn_play->setEnabled(false);
   ui.btn_stop->setEnabled(false);
@@ -75,7 +73,8 @@ void MainWindow::timerCallback()
   ui.txt_j2->setText(QString::number(joint_angle.at(1), 'f', 3));
   ui.txt_j3->setText(QString::number(joint_angle.at(2), 'f', 3));
   ui.txt_j4->setText(QString::number(joint_angle.at(3), 'f', 3));
-  ui.txt_grip->setText(QString::number(joint_angle.at(4), 'f', 3));
+  ui.txt_j5->setText(QString::number(joint_angle.at(4), 'f', 3));
+  ui.txt_j6->setText(QString::number(joint_angle.at(5), 'f', 3));
 
   std::vector<double> position = qnode.getPresentKinematicsPosition();
 
@@ -91,7 +90,6 @@ void MainWindow::timerCallback()
   ui.txt_q_z->setText(QString::number(position.at(5), 'f', 3));
   ui.txt_q_w->setText(QString::number(position.at(6), 'f', 3));
 }
-
 void MainWindow::tabSelected()
 {
   if (ui.tabWidget->currentIndex() == 0) {
@@ -117,13 +115,10 @@ void MainWindow::on_btn_timer_start_clicked(void)
   ui.btn_timer_start->setEnabled(false);
   ui.btn_init_pose->setEnabled(true);
   ui.btn_home_pose->setEnabled(true);
-  ui.btn_gripper_open->setEnabled(true);
-  ui.btn_gripper_close->setEnabled(true);
   ui.btn_read_joint_angle->setEnabled(true);
   ui.btn_send_joint_angle->setEnabled(true);
   ui.btn_read_kinematic_pose->setEnabled(true);
   ui.btn_send_kinematic_pose->setEnabled(true);
-  ui.btn_set_gripper->setEnabled(true);
   ui.btn_play->setEnabled(true);
   ui.btn_stop->setEnabled(true);
   ui.btn_reset_task->setEnabled(true);
@@ -140,7 +135,7 @@ void MainWindow::on_btn_init_pose_clicked(void)
   std::thread(
     [this]()
     {
-      std::vector<double> joint_angle = {0.0, 0.0, 0.0, 0.0};
+      std::vector<double> joint_angle = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 
       if (!qnode.setJointSpacePath(joint_angle)) {
         QMetaObject::invokeMethod(
@@ -162,7 +157,7 @@ void MainWindow::on_btn_home_pose_clicked(void)
   std::thread(
     [this]()
     {
-      std::vector<double> joint_angle = {0.0, -1.0, 0.7, 0.3};
+      std::vector<double> joint_angle = {0.0, -0.918, 2.19, -1.43, 0.2, 0.2};
 
       if (!qnode.setJointSpacePath(joint_angle)) {
         QMetaObject::invokeMethod(
@@ -179,49 +174,6 @@ void MainWindow::on_btn_home_pose_clicked(void)
     }).detach();
 }
 
-void MainWindow::on_btn_gripper_open_clicked(void)
-{
-  std::thread(
-    [this]()
-    {
-      std::vector<double> joint_angle = {0.019};
-
-      if (!qnode.setToolControl(joint_angle)) {
-        QMetaObject::invokeMethod(
-          this, [this]() {
-            writeLog("[ERR!!] Failed to send service");
-          }, Qt::QueuedConnection);
-        return;
-      }
-
-      QMetaObject::invokeMethod(
-        this, [this]() {
-          writeLog("Send gripper open");
-        }, Qt::QueuedConnection);
-    }).detach();
-}
-
-void MainWindow::on_btn_gripper_close_clicked(void)
-{
-  std::thread(
-    [this]()
-    {
-      std::vector<double> joint_angle = {-0.01};
-
-      if (!qnode.setToolControl(joint_angle)) {
-        QMetaObject::invokeMethod(
-          this, [this]() {
-            writeLog("[WARN!!] Contacted with a object");
-          }, Qt::QueuedConnection);
-        return;
-      }
-
-      QMetaObject::invokeMethod(
-        this, [this]() {
-          writeLog("Send gripper close");
-        }, Qt::QueuedConnection);
-    }).detach();
-}
 
 void MainWindow::on_btn_read_joint_angle_clicked(void)
 {
@@ -230,8 +182,8 @@ void MainWindow::on_btn_read_joint_angle_clicked(void)
   ui.doubleSpinBox_j2->setValue(joint_angle.at(1));
   ui.doubleSpinBox_j3->setValue(joint_angle.at(2));
   ui.doubleSpinBox_j4->setValue(joint_angle.at(3));
-
-  ui.doubleSpinBox_gripper->setValue(joint_angle.at(4));
+  ui.doubleSpinBox_j5->setValue(joint_angle.at(4));
+  ui.doubleSpinBox_j6->setValue(joint_angle.at(5));
 
   writeLog("Read joint angle");
 }
@@ -244,6 +196,8 @@ void MainWindow::on_btn_send_joint_angle_clicked(void)
   joint_angle.push_back(ui.doubleSpinBox_j2->value());
   joint_angle.push_back(ui.doubleSpinBox_j3->value());
   joint_angle.push_back(ui.doubleSpinBox_j4->value());
+  joint_angle.push_back(ui.doubleSpinBox_j5->value());
+  joint_angle.push_back(ui.doubleSpinBox_j6->value());
 
   std::thread(
     [this, joint_angle]()
@@ -313,16 +267,6 @@ void MainWindow::on_btn_send_kinematic_pose_clicked(void)
     }).detach();
 }
 
-void MainWindow::on_btn_set_gripper_clicked(void)
-{
-  std::vector<double> joint_angle;
-  joint_angle.push_back(ui.doubleSpinBox_gripper->value());
-  if (!qnode.setToolControl(joint_angle)) {
-    writeLog("[WARN!!] Contacted with a object");
-    return;
-  }
-  writeLog("Send gripper value");
-}
 
 void MainWindow::on_btn_save_pose_clicked(void)
 {
@@ -333,19 +277,20 @@ void MainWindow::on_btn_save_pose_clicked(void)
   if (file.is_open()) {
     file << joint_angle.at(0) << "," << joint_angle.at(1) << ","
          << joint_angle.at(2) << "," << joint_angle.at(3) << ","
-         << joint_angle.at(4) << std::endl;
+         << joint_angle.at(4) << "," << joint_angle.at(5) << ","
+         << std::endl;
     file.close();
 
     writeLog("Pose saved to CSV.");
 
     int row = tableWidget->rowCount();
     tableWidget->insertRow(row);
-    for (int i = 0; i < 5; ++i) {
+    for (int i = 0; i < 6; ++i) {
       QTableWidgetItem * item = new QTableWidgetItem(QString::number(joint_angle.at(i), 'f', 3));
       tableWidget->setItem(row, i, item);
     }
     QTableWidgetItem * statusItem = new QTableWidgetItem("Saved");
-    tableWidget->setItem(row, 5, statusItem);
+    tableWidget->setItem(row, 6, statusItem);
   } else {
     writeLog("[ERR!!] Unable to open file.");
   }
@@ -368,15 +313,15 @@ void MainWindow::on_btn_read_task_clicked(void)
         values.push_back(value);
       }
 
-      if (values.size() == 5) {
+      if (values.size() == 6) {
         tableWidget->insertRow(row);
-        for (int col = 0; col < 5; ++col) {
+        for (int col = 0; col < 6; ++col) {
           double doubleValue = std::stod(values.at(col));
           QTableWidgetItem * item = new QTableWidgetItem(QString::number(doubleValue, 'f', 3));
           tableWidget->setItem(row, col, item);
         }
         QTableWidgetItem * statusItem = new QTableWidgetItem("Loaded");
-        tableWidget->setItem(row, 5, statusItem);
+        tableWidget->setItem(row, 6, statusItem);
         ++row;
       }
     }
@@ -416,12 +361,14 @@ void MainWindow::on_btn_play_clicked(void)
           this, [this, repeat, repeatCount]() {
             writeLog(
               QString("Executing task repetition %1 of %2").arg(
-                repeat + 1).arg(repeatCount));
+                repeat +
+                1).arg(repeatCount));
           }, Qt::QueuedConnection);
 
         int rowCount = tableWidget->rowCount();
+
         for (int row = 0; row < rowCount; ++row) {
-          for (int col = 0; col < 6; ++col) {
+          for (int col = 0; col < 7; ++col) {
             QMetaObject::invokeMethod(
               this, [this, row, col]() {
                 tableWidget->item(row, col)->setBackground(Qt::white);
@@ -429,7 +376,7 @@ void MainWindow::on_btn_play_clicked(void)
           }
           QMetaObject::invokeMethod(
             this, [this, row]() {
-              tableWidget->item(row, 5)->setText("Pending");
+              tableWidget->item(row, 6)->setText("Pending");
             }, Qt::QueuedConnection);
         }
 
@@ -457,15 +404,13 @@ void MainWindow::on_btn_play_clicked(void)
               joint_angle.push_back(std::stod(value));
             }
 
-            if (joint_angle.size() == 5) {
-              double current_gripper_value = joint_angle.back();
-
+            if (joint_angle.size() == 6) {
               QMetaObject::invokeMethod(
                 this, [this, row]() {
-                  for (int col = 0; col < 6; ++col) {
+                  for (int col = 0; col < 7; ++col) {
                     tableWidget->item(row, col)->setBackground(Qt::yellow);
                   }
-                  tableWidget->item(row, 5)->setText("Executing...");
+                  tableWidget->item(row, 6)->setText("Executing...");
                 }, Qt::QueuedConnection);
 
               if (!qnode.setJointSpacePath(joint_angle)) {
@@ -476,21 +421,6 @@ void MainWindow::on_btn_play_clicked(void)
                 break;
               }
 
-              if (std::abs(current_gripper_value - previous_gripper_value) > 0.01) {
-                std::vector<double> gripper_only = {current_gripper_value};
-                if (!qnode.setToolControl(gripper_only)) {
-                  QMetaObject::invokeMethod(
-                    this, [this]() {
-                      writeLog("[ERR!!] Failed to send gripper control service");
-                    }, Qt::QueuedConnection);
-                  break;
-                }
-
-                QMetaObject::invokeMethod(
-                  this, [this]() {
-                    writeLog("Gripper adjusted.");
-                  }, Qt::QueuedConnection);
-              }
 
               QMetaObject::invokeMethod(
                 this, [this]() {
@@ -499,13 +429,11 @@ void MainWindow::on_btn_play_clicked(void)
 
               QMetaObject::invokeMethod(
                 this, [this, row]() {
-                  for (int col = 0; col < 6; ++col) {
+                  for (int col = 0; col < 7; ++col) {
                     tableWidget->item(row, col)->setBackground(Qt::green);
                   }
-                  tableWidget->item(row, 5)->setText("Done");
+                  tableWidget->item(row, 6)->setText("Done");
                 }, Qt::QueuedConnection);
-
-              previous_gripper_value = current_gripper_value;
             }
 
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
@@ -525,12 +453,11 @@ void MainWindow::on_btn_play_clicked(void)
           writeLog("All repetitions completed. Resetting table.");
           int rowCount = tableWidget->rowCount();
           for (int row = 0; row < rowCount; ++row) {
-            for (int col = 0; col < 6; ++col) {
+            for (int col = 0; col < 7; ++col) {
               tableWidget->item(row, col)->setBackground(Qt::white);
             }
-            tableWidget->item(row, 5)->setText("Done");
+            tableWidget->item(row, 6)->setText("Done");
           }
-          ui.btn_reset_task->setEnabled(true);
         }, Qt::QueuedConnection);
     })
   .detach();
@@ -543,10 +470,10 @@ void MainWindow::on_btn_stop_clicked(void)
   std::this_thread::sleep_for(std::chrono::milliseconds(200));
   int rowCount = tableWidget->rowCount();
   for (int row = 0; row < rowCount; ++row) {
-    for (int col = 0; col < 6; ++col) {
+    for (int col = 0; col < 7; ++col) {
       tableWidget->item(row, col)->setBackground(Qt::white);
     }
-    tableWidget->item(row, 5)->setText("Stopped");
+    tableWidget->item(row, 6)->setText("Stopped");
   }
   writeLog("Robot motion stopped and state reset.");
 }
@@ -566,4 +493,4 @@ void MainWindow::on_btn_reset_task_clicked(void)
   writeLog("Reset completed.");
 }
 
-}  // namespace open_manipulator_x_gui
+}  // namespace omy_3m_gui
