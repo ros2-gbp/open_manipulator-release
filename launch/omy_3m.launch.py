@@ -14,9 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# Author: Wonho Yoon, Sungho Woo
+# Author: Wonho Yun, Sungho Woo, Woojin Wie
 
-import os
 
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
@@ -29,20 +28,7 @@ from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
 
-def is_valid_to_launch():
-    # Path includes model name of Raspberry Pi series
-    path = '/sys/firmware/devicetree/base/model'
-    if os.path.exists(path):
-        return False
-    else:
-        return True
-
-
 def generate_launch_description():
-    if not is_valid_to_launch():
-        print('Can not launch fake robot in Raspberry Pi')
-        return LaunchDescription([])
-
     prefix = LaunchConfiguration('prefix')
     use_gui = LaunchConfiguration('use_gui')
 
@@ -52,15 +38,15 @@ def generate_launch_description():
         PathJoinSubstitution([
             FindPackageShare('open_manipulator_description'),
             'urdf',
-            'om_x',
-            'open_manipulator_x.urdf.xacro',
+            'omy_3m',
+            'omy_3m.urdf.xacro',
         ]),
         ' ',
         'prefix:=',
         prefix,
         ' ',
         'use_fake_hardware:=',
-        'False',
+        'True',
     ])
 
     rviz_config_file = PathJoinSubstitution([
@@ -73,7 +59,7 @@ def generate_launch_description():
         DeclareLaunchArgument(
             'prefix',
             default_value='""',
-            description='Prefix of the joint and link names',
+            description='prefix of the joint and link names',
         ),
         DeclareLaunchArgument(
             'use_gui',
