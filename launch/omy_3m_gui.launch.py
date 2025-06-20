@@ -27,12 +27,12 @@ def generate_launch_description():
     csv_file_path = os.path.join(
         get_package_share_directory('open_manipulator_gui'),
         'config',
-        'om_y_joint_log.csv',
+        'omy_3m_joint_log.csv',
     )
 
     gui_node = Node(
         package='open_manipulator_gui',
-        executable='open_manipulator_y_gui_node',
+        executable='omy_3m_gui_node',
         output='screen',
         parameters=[{'use_sim_time': True}, {'csv_path': csv_file_path}],
     )
