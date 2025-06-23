@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// Author: Ryan Shim, Sungho Woo, Wonho Yoon, Woojin Wie
+// Author: Ryan Shim, Sungho Woo, Wonho Yun, Woojin Wie
 
 #include <QMainWindow>
 #include <QWidget>
@@ -23,9 +23,9 @@
 #include <QObject>
 #include <QMessageBox>
 #include <iostream>
-#include "../include/open_manipulator_y_gui/main_window.hpp"
+#include "../include/omy_f3m_gui/main_window.hpp"
 
-namespace open_manipulator_y_gui
+namespace omy_f3m_gui
 {
 
 MainWindow::MainWindow(int argc, char ** argv, QWidget * parent)
@@ -574,4 +574,4 @@ void MainWindow::on_btn_reset_task_clicked(void)
   writeLog("Reset completed.");
 }
 
-}  // namespace open_manipulator_y_gui
+}  // namespace omy_f3m_gui
