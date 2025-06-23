@@ -1,0 +1,12 @@
+Source: ros-kilted-open-manipulator-playground
+Section: misc
+Priority: optional
+Maintainer: Pyo <pyo@robotis.com>
+Build-Depends: debhelper (>= 9.0.0), ros-kilted-ament-cmake, ros-kilted-moveit-ros-planning-interface, ros-kilted-rclcpp, ros-kilted-ros-workspace
+Homepage: http://wiki.ros.org/open_manipulator
+Standards-Version: 3.9.2
+
+Package: ros-kilted-open-manipulator-playground
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kilted-moveit-ros-planning-interface, ros-kilted-rclcpp, ros-kilted-ros-workspace
+Description: This package provides an example for utilizing the MoveIt API with the OpenMANIPULATOR, allowing users to practice and experiment freely.
