@@ -2,6 +2,33 @@
 Changelog for package open_manipulator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+4.0.1 (2025-06-23)
+------------------
+* Changed default dynamixel profile configuration to use time-based profile for all OM Series
+* Contributors: Woojin Wie
+
+4.0.0 (2025-06-19)
+------------------
+* Refactored the package to support the new OMY-3M, OMY-F3M, OMY-L100
+* Contributors: Woojin Wie, Wonho Yun
+
+3.3.0 (2025-06-10)
+------------------
+* Added self-collision functionality to OMY Follower
+* Contributors: Sungho Woo
+
+3.2.4 (2025-05-30)
+------------------
+* Modified ROS2 controller package dependencies
+* Fixed stderr output handling
+* Deprecate ament_include_dependency usage in CMakeLists.txt
+* Contributors: Wonho Yun
+
+3.2.3 (2025-05-07)
+------------------
+* Updated udev settings for improved device recognition
+* Contributors: Wonho Yun
+
 3.2.2 (2025-04-17)
 ------------------
 * Optimized ROS2 control configurations for better performance
