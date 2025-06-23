@@ -57,7 +57,6 @@ class MoveToHome(Node):
             'joint4',
             'joint5',
             'joint6',
-            'rh_r1_joint',
         ]
 
         # Final target positions (in radians)
@@ -68,10 +67,9 @@ class MoveToHome(Node):
             self.angle_to_radian(30),
             self.angle_to_radian(180),
             0.0,
-            0.0,
         ]
 
-        self.init_positions = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        self.init_positions = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
         self.current_positions = None
         self.current_velocities = None
