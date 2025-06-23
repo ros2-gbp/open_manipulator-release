@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <joint_trajectory_command_broadcaster/joint_trajectory_command_broadcaster.hpp>
+#include "joint_trajectory_command_broadcaster/joint_trajectory_command_broadcaster.hpp"
 
 #include <cstddef>
 #include <limits>
@@ -20,12 +20,14 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <atomic>
 
 #include "hardware_interface/types/hardware_interface_type_values.hpp"
 #include "rclcpp/qos.hpp"
 #include "rclcpp/time.hpp"
 #include "std_msgs/msg/header.hpp"
 #include "trajectory_msgs/msg/joint_trajectory.hpp"
+#include "std_msgs/msg/bool.hpp"
 #include "urdf/model.h"
 
 namespace rclcpp_lifecycle
@@ -121,6 +123,10 @@ controller_interface::CallbackReturn JointTrajectoryCommandBroadcaster::on_confi
     fprintf(stderr, "Exception thrown during init stage with message: %s \n", e.what());
     return CallbackReturn::ERROR;
   }
+
+  collision_flag_sub_ = get_node()->create_subscription<std_msgs::msg::Bool>(
+    "/collision_flag", rclcpp::QoS(10),
+    std::bind(&JointTrajectoryCommandBroadcaster::collision_callback, this, std::placeholders::_1));
 
   const std::string & urdf = get_robot_description();
   is_model_loaded_ = !urdf.empty() && model_.initString(urdf);
@@ -264,16 +270,23 @@ double get_value(
 }
 
 controller_interface::return_type JointTrajectoryCommandBroadcaster::update(
-  const rclcpp::Time & time, const rclcpp::Duration & /*period*/)
+  const rclcpp::Time & /*time*/, const rclcpp::Duration & /*period*/)
 {
+  if (collision_detected_.load()) {
+    RCLCPP_WARN_THROTTLE(get_node()->get_logger(), *get_node()->get_clock(), 2000,
+      "Collision detected. Skipping joint_trajectory publish.");
+    return controller_interface::return_type::OK;
+  }
   // Update stored values
   for (const auto & state_interface : state_interfaces_) {
     std::string interface_name = state_interface.get_interface_name();
     if (map_interface_to_joint_state_.count(interface_name) > 0) {
       interface_name = map_interface_to_joint_state_[interface_name];
     }
-    name_if_value_mapping_[state_interface.get_prefix_name()][interface_name] =
-      state_interface.get_value();
+    auto value = state_interface.get_optional();
+    if (value) {
+      name_if_value_mapping_[state_interface.get_prefix_name()][interface_name] = *value;
+    }
   }
 
   // Publish JointTrajectory message with current positions
@@ -314,6 +327,11 @@ controller_interface::return_type JointTrajectoryCommandBroadcaster::update(
   }
 
   return controller_interface::return_type::OK;
+}
+
+void JointTrajectoryCommandBroadcaster::collision_callback(const std_msgs::msg::Bool::SharedPtr msg)
+{
+  collision_detected_.store(msg->data);
 }
 
 }  // namespace joint_trajectory_command_broadcaster
