@@ -1,0 +1,13 @@
+Source: ros-jazzy-open-manipulator-collision
+Section: misc
+Priority: optional
+Maintainer: Pyo <pyo@robotis.com>
+Build-Depends: debhelper (>= 9.0.0), libeigen3-dev, libfcl-dev, ros-jazzy-ament-cmake, ros-jazzy-kdl-parser, ros-jazzy-rclcpp, ros-jazzy-sensor-msgs, ros-jazzy-std-msgs, ros-jazzy-urdf, ros-jazzy-visualization-msgs, ros-jazzy-ros-workspace
+Homepage: http://wiki.ros.org/open_manipulator
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-open-manipulator-collision
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libeigen3-dev, libfcl-dev, ros-jazzy-kdl-parser, ros-jazzy-rclcpp, ros-jazzy-sensor-msgs, ros-jazzy-std-msgs, ros-jazzy-urdf, ros-jazzy-visualization-msgs, ros-jazzy-ros-workspace
+Description: This package implements a self-collision detection system for the follower robot during leader-follower teleoperation.
+ Its primary purpose is to enhance safety by detecting potential self-collisions in real time while the robot is being remotely operated.
