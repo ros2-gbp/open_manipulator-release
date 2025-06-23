@@ -1,0 +1,12 @@
+Source: ros-kilted-open-manipulator-gui
+Section: misc
+Priority: optional
+Maintainer: Pyo <pyo@robotis.com>
+Build-Depends: debhelper (>= 9.0.0), libqt5core5a, libqt5gui5, qt5-qmake, qtbase5-dev, ros-kilted-ament-cmake, ros-kilted-eigen3-cmake-module, ros-kilted-geometry-msgs, ros-kilted-moveit-core, ros-kilted-moveit-msgs, ros-kilted-moveit-ros-planning, ros-kilted-moveit-ros-planning-interface, ros-kilted-rclcpp, ros-kilted-sensor-msgs, ros-kilted-std-msgs, ros-kilted-ros-workspace
+Homepage: http://wiki.ros.org/open_manipulator
+Standards-Version: 3.9.2
+
+Package: ros-kilted-open-manipulator-gui
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libqt5core5a, libqt5gui5, qt5-qmake, qtbase5-dev, ros-kilted-eigen3-cmake-module, ros-kilted-geometry-msgs, ros-kilted-moveit-core, ros-kilted-moveit-msgs, ros-kilted-moveit-ros-planning, ros-kilted-moveit-ros-planning-interface, ros-kilted-rclcpp, ros-kilted-sensor-msgs, ros-kilted-std-msgs, ros-kilted-ros-workspace
+Description: The OpenMANIPULATOR GUI ROS 2 package enables users to explore Joint Space, Task Space, and even work with the Task Constructor functionality.
