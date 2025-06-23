@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# Author: Wonho Yoon, Sungho Woo
+# Author: Wonho Yun, Sungho Woo
 
 import os
 
@@ -27,12 +27,12 @@ def generate_launch_description():
     csv_file_path = os.path.join(
         get_package_share_directory('open_manipulator_gui'),
         'config',
-        'om_x_joint_log.csv',
+        'omx_joint_log.csv',
     )
 
     gui_node = Node(
         package='open_manipulator_gui',
-        executable='open_manipulator_x_gui_node',
+        executable='omx_gui_node',
         output='screen',
         parameters=[{'use_sim_time': True}, {'csv_path': csv_file_path}],
     )
