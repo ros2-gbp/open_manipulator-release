@@ -2,6 +2,27 @@
 Changelog for package open_manipulator_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+4.0.1 (2025-06-23)
+------------------
+* None
+
+4.0.0 (2025-06-19)
+------------------
+* Refactored the package to support the new OMY-3M, OMY-F3M, OMY-L100
+* Contributors: Woojin Wie, Wonho Yun
+
+3.3.0 (2025-06-10)
+------------------
+* None
+
+3.2.4 (2025-05-30)
+------------------
+* None
+
+3.2.3 (2025-05-07)
+------------------
+* None
+
 3.2.2 (2025-04-17)
 ------------------
 * Handling lint errors

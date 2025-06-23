@@ -2,6 +2,30 @@
 Changelog for package om_spring_actuator_controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+4.0.1 (2025-06-23)
+------------------
+* None
+
+4.0.0 (2025-06-19)
+------------------
+* Fix the velocity unit issue to match the new dynamixel_hardware_interface version
+* Contributors: Woojin Wie
+
+3.3.0 (2025-06-10)
+------------------
+* None
+
+3.2.4 (2025-05-30)
+------------------
+* Modified ROS2 controller package dependencies
+* Fixed stderr output handling
+* Deprecate ament_include_dependency usage in CMakeLists.txt
+* Contributors: Wonho Yun
+
+3.2.3 (2025-05-07)
+------------------
+* None
+
 3.2.2 (2025-04-17)
 ------------------
 * Handle lint errors
