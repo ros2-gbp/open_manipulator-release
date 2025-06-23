@@ -23,26 +23,37 @@ include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-add_executable(hello_moveit_omx src/hello_moveit_omx.cpp)
-target_include_directories(hello_moveit_omx PUBLIC
+add_executable(omx_hello_moveit src/omx_hello_moveit.cpp)
+target_include_directories(omx_hello_moveit PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
-target_compile_features(hello_moveit_omx PUBLIC cxx_std_17)
-ament_target_dependencies(hello_moveit_omx
-  moveit_ros_planning_interface
-  rclcpp
+target_compile_features(omx_hello_moveit PUBLIC cxx_std_17)
+target_link_libraries(omx_hello_moveit PUBLIC
+  moveit_ros_planning_interface::moveit_move_group_interface
+  rclcpp::rclcpp
 )
 
-add_executable(hello_moveit_omy src/hello_moveit_omy.cpp)
-target_include_directories(hello_moveit_omy PUBLIC
+add_executable(omy_f3m_hello_moveit src/omy_f3m_hello_moveit.cpp)
+target_include_directories(omy_f3m_hello_moveit PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
-target_compile_features(hello_moveit_omy PUBLIC cxx_std_17)
-ament_target_dependencies(hello_moveit_omy
-  moveit_ros_planning_interface
-  rclcpp
+target_compile_features(omy_f3m_hello_moveit PUBLIC cxx_std_17)
+target_link_libraries(omy_f3m_hello_moveit PUBLIC
+  moveit_ros_planning_interface::moveit_move_group_interface
+  rclcpp::rclcpp
+)
+
+add_executable(omy_3m_hello_moveit src/omy_3m_hello_moveit.cpp)
+target_include_directories(omy_3m_hello_moveit PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+)
+target_compile_features(omy_3m_hello_moveit PUBLIC cxx_std_17)
+target_link_libraries(omy_3m_hello_moveit PUBLIC
+  moveit_ros_planning_interface::moveit_move_group_interface
+  rclcpp::rclcpp
 )
 
 ################################################################################
@@ -52,16 +63,15 @@ install(DIRECTORY include/
   DESTINATION include
 )
 
-install(TARGETS hello_moveit_omx hello_moveit_omy
+install(TARGETS omx_hello_moveit omy_f3m_hello_moveit omy_3m_hello_moveit
   EXPORT export_${PROJECT_NAME}
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
 
-ament_export_include_directories(include)
-ament_export_targets(export_${PROJECT_NAME})
-
 ################################################################################
 # Macro for ament package
 ################################################################################
+ament_export_include_directories(include)
+ament_export_targets(export_${PROJECT_NAME})
 ament_package()
