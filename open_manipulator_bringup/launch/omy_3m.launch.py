@@ -66,6 +66,11 @@ def generate_launch_description():
             default_value='omy_3m',
             description='Type of ros2_control',
         ),
+        DeclareLaunchArgument(
+            'init_position_file',
+            default_value='initial_positions.yaml',
+            description='Path to the initial position file',
+        ),
     ]
 
     # Launch configurations
@@ -76,6 +81,7 @@ def generate_launch_description():
     fake_sensor_commands = LaunchConfiguration('fake_sensor_commands')
     init_position = LaunchConfiguration('init_position')
     ros2_control_type = LaunchConfiguration('ros2_control_type')
+    init_position_file = LaunchConfiguration('init_position_file')
 
     # Generate URDF file using xacro
     urdf_file = Command([
@@ -121,8 +127,8 @@ def generate_launch_description():
     trajectory_params_file = PathJoinSubstitution([
         FindPackageShare('open_manipulator_bringup'),
         'config',
-        'omy_f3m_follower_ai',
-        'initial_positions.yaml',
+        'omy_3m',
+        init_position_file,
     ])
 
     # Define nodes
