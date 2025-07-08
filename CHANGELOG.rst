@@ -2,6 +2,30 @@
 Changelog for package open_manipulator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+4.0.5 (2025-07-02)
+------------------
+* Added init_position_file argument to launch files
+* Updated profile time and acceleration time for OMY series
+* Fixed lint errors
+* Updated Collision area for OMY series
+* Added feedback control for leader-follower synchronization
+* Contributors: Woojin Wie, Sungho Woo
+
+4.0.4 (2025-06-26)
+------------------
+* Added udev rule apply logic to container.sh
+* Contributors: Woojin Wie
+
+4.0.3 (2025-06-25)
+------------------
+* Changed Dockerfile to use pre-built librealsense image
+* Contributors: Woojin Wie
+
+4.0.2 (2025-06-25)
+------------------
+* Fixed launch file paths for OMY-3M and OMY-F3M
+* Contributors: Woojin Wie
+
 4.0.1 (2025-06-23)
 ------------------
 * Changed default dynamixel profile configuration to use time-based profile for all OM Series
