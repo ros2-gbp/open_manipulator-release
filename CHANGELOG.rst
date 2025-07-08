@@ -2,6 +2,26 @@
 Changelog for package open_manipulator_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+4.0.5 (2025-07-02)
+------------------
+* Added init_position_file argument to launch files
+* Added qc_position file for OMY series
+* Enabled self-collision avoidance by default for OMY series
+* Contributors: Woojin Wie, Sungho Woo
+
+4.0.4 (2025-06-26)
+------------------
+* None
+
+4.0.3 (2025-06-25)
+------------------
+* None
+
+4.0.2 (2025-06-25)
+------------------
+* Fixed launch file paths for OMY-3M and OMY-F3M
+* Contributors: Woojin Wie
+
 4.0.1 (2025-06-23)
 ------------------
 * None
