@@ -1,0 +1,12 @@
+Source: ros-kilted-om-joint-trajectory-command-broadcaster
+Section: misc
+Priority: optional
+Maintainer: Pyo <pyo@robotis.com>
+Build-Depends: debhelper (>= 9.0.0), ros-kilted-ament-cmake, ros-kilted-backward-ros, ros-kilted-builtin-interfaces, ros-kilted-control-msgs, ros-kilted-controller-interface, ros-kilted-generate-parameter-library, ros-kilted-pluginlib, ros-kilted-rclcpp-lifecycle, ros-kilted-rcutils, ros-kilted-realtime-tools, ros-kilted-sensor-msgs, ros-kilted-trajectory-msgs, ros-kilted-urdf, ros-kilted-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-kilted-om-joint-trajectory-command-broadcaster
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kilted-backward-ros, ros-kilted-builtin-interfaces, ros-kilted-control-msgs, ros-kilted-controller-interface, ros-kilted-generate-parameter-library, ros-kilted-pluginlib, ros-kilted-rclcpp-lifecycle, ros-kilted-rcutils, ros-kilted-realtime-tools, ros-kilted-sensor-msgs, ros-kilted-trajectory-msgs, ros-kilted-urdf, ros-kilted-ros-workspace
+Description: Joint Trajectory Command Broadcaster ROS 2 package.
