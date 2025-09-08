@@ -1,0 +1,12 @@
+Source: ros-kilted-open-manipulator
+Section: misc
+Priority: optional
+Maintainer: Pyo <pyo@robotis.com>
+Build-Depends: debhelper (>= 9.0.0), ros-kilted-ament-cmake, ros-kilted-ros-workspace
+Homepage: http://wiki.ros.org/open_manipulator
+Standards-Version: 3.9.2
+
+Package: ros-kilted-open-manipulator
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kilted-om-gravity-compensation-controller, ros-kilted-om-joint-trajectory-command-broadcaster, ros-kilted-om-spring-actuator-controller, ros-kilted-open-manipulator-bringup, ros-kilted-open-manipulator-collision, ros-kilted-open-manipulator-description, ros-kilted-open-manipulator-gui, ros-kilted-open-manipulator-moveit-config, ros-kilted-open-manipulator-playground, ros-kilted-open-manipulator-teleop, ros-kilted-ros-workspace
+Description: OpenMANIPULATOR meta ROS 2 package.
