@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# Author: Wonho Yun, Sungho Woo, Woojin Wie
+# Author: Wonho Yun, Sungho Woo, Woojin Wie, Junha Cha
 
 import os
 from pathlib import Path
@@ -70,8 +70,8 @@ def generate_launch_description():
     xacro_file = os.path.join(
         open_manipulator_description_path,
         'urdf',
-        'open_manipulator_x',
-        'open_manipulator_x.urdf.xacro',
+        'omx_f',
+        'omx_f.urdf.xacro',
     )
 
     doc = xacro.process_file(xacro_file, mappings={'use_sim': 'true'})
@@ -107,7 +107,7 @@ def generate_launch_description():
             '-Y',
             '0.0',
             '-name',
-            'open_manipulator_x',
+            'omx_f',
             '-allow_renaming',
             'true',
             '-use_sim',
