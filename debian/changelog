@@ -1,0 +1,81 @@
+ros-kilted-open-manipulator-collision (4.1.0-1bookworm) bookworm; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Thu, 23 Oct 2025 15:00:00 -0000
+
+ros-kilted-open-manipulator-collision (4.0.10-1bookworm) bookworm; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Wed, 22 Oct 2025 15:00:00 -0000
+
+ros-kilted-open-manipulator-collision (4.0.9-1bookworm) bookworm; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Sun, 14 Sep 2025 15:00:00 -0000
+
+ros-kilted-open-manipulator-collision (4.0.8-1bookworm) bookworm; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Tue, 02 Sep 2025 15:00:00 -0000
+
+ros-kilted-open-manipulator-collision (4.0.7-1bookworm) bookworm; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Wed, 16 Jul 2025 15:00:00 -0000
+
+ros-kilted-open-manipulator-collision (4.0.6-1bookworm) bookworm; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Mon, 14 Jul 2025 15:00:00 -0000
+
+ros-kilted-open-manipulator-collision (4.0.5-1bookworm) bookworm; urgency=high
+
+  * Updated urdf file path for OMY
+  * Contributors: Sungho Woo
+
+ -- Pyo <pyo@robotis.com>  Tue, 01 Jul 2025 15:00:00 -0000
+
+ros-kilted-open-manipulator-collision (4.0.4-1bookworm) bookworm; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Wed, 25 Jun 2025 15:00:00 -0000
+
+ros-kilted-open-manipulator-collision (4.0.3-1bookworm) bookworm; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Tue, 24 Jun 2025 15:00:00 -0000
+
+ros-kilted-open-manipulator-collision (4.0.2-1bookworm) bookworm; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Tue, 24 Jun 2025 15:00:00 -0000
+
+ros-kilted-open-manipulator-collision (4.0.1-1bookworm) bookworm; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Sun, 22 Jun 2025 15:00:00 -0000
+
+ros-kilted-open-manipulator-collision (4.0.0-1bookworm) bookworm; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Wed, 18 Jun 2025 15:00:00 -0000
+
+ros-kilted-open-manipulator-collision (3.3.0-1bookworm) bookworm; urgency=high
+
+  * Added self-collision functionality to OMY Follower
+  * Contributors: Sungho Woo
+
+ -- Pyo <pyo@robotis.com>  Mon, 09 Jun 2025 15:00:00 -0000
+
+
