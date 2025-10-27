@@ -2,6 +2,22 @@
 Changelog for package om_joint_trajectory_command_broadcaster
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+4.1.0 (2025-10-24)
+-------------------
+* None
+
+4.0.10 (2025-10-23)
+-------------------
+* None
+
+4.0.9 (2025-09-15)
+------------------
+* None
+
+4.0.8 (2025-09-03)
+------------------
+* None
+
 4.0.7 (2025-07-17)
 ------------------
 * Fixed joint offset functionality of joint trajectory command broadcaster
