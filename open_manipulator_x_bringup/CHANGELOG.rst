@@ -1,33 +1,29 @@
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Changelog for package open_manipulator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Changelog for package open_manipulator_x_bringup
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 3.0.4 (2025-07-15)
 ------------------
-* Changed the output path of the Qt5-generated header file (ui_main_window.h) by adding a custom command in CMake. The generated file is now copied to a structured subdirectory (gui_headers/) within the build directory to improve include path consistency and comply with linting rules
-* Contributors: Hyungyu Kim
+* None
 
 3.0.3 (2025-07-10)
 ------------------
-* Fixed an issue where meshes were not loading in the Gazebo simulation by adding the Gazebo model path export
 * Linted the codebase
 * Contributors: Hyungyu Kim
 
 3.0.2 (2025-06-20)
 ------------------
-* Removed unnecessary dependencies
-* Contributors: Wonho Yun
+* None
 
 3.0.1 (2025-04-11)
 ------------------
 * Modified Update Rate
-* Docker support
-* Contributors: Wonho Yun, Woojin Wie
+* Contributors: Wonho Yun
 
 3.0.0 (2024-12-06)
 ------------------
 * Refactored OM-X for compatibility with MoveIt 2
-* Contributors: Wonho Yun, Sungho Woo
+* Contributors: Wonho Yoon, Sungho Woo
 
 2.3.0 (2021-10-06)
 ------------------
