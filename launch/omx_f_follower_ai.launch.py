@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# Author: Wonho Yun, Sungho Woo, Woojin Wie
+# Author: Wonho Yun, Sungho Woo, Woojin Wie, Junha Cha
 
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
@@ -63,13 +63,13 @@ def generate_launch_description():
         ),
         DeclareLaunchArgument(
             'ros2_control_type',
-            default_value='omy_3m_position',
+            default_value='omx_f',
             description='Type of ros2_control',
         ),
         DeclareLaunchArgument(
-            'init_position_file',
-            default_value='initial_positions.yaml',
-            description='Path to the initial position file',
+            'port_name',
+            default_value='/dev/ttyACM0',
+            description='Port name for the hardware interface',
         ),
     ]
 
@@ -81,7 +81,7 @@ def generate_launch_description():
     fake_sensor_commands = LaunchConfiguration('fake_sensor_commands')
     init_position = LaunchConfiguration('init_position')
     ros2_control_type = LaunchConfiguration('ros2_control_type')
-    init_position_file = LaunchConfiguration('init_position_file')
+    port_name = LaunchConfiguration('port_name')
 
     # Generate URDF file using xacro
     urdf_file = Command([
@@ -90,8 +90,8 @@ def generate_launch_description():
         PathJoinSubstitution([
             FindPackageShare('open_manipulator_description'),
             'urdf',
-            'omy_3m',
-            'omy_3m.urdf.xacro',
+            'omx_f',
+            'omx_f.urdf.xacro',
         ]),
         ' ',
         'prefix:=',
@@ -108,13 +108,16 @@ def generate_launch_description():
         ' ',
         'ros2_control_type:=',
         ros2_control_type,
+        ' ',
+        'port_name:=',
+        port_name,
     ])
 
     # Paths for configuration files
     controller_manager_config = PathJoinSubstitution([
         FindPackageShare('open_manipulator_bringup'),
         'config',
-        'omy_3m',
+        'omx_f_follower_ai',
         'hardware_controller_manager.yaml',
     ])
 
@@ -127,8 +130,8 @@ def generate_launch_description():
     trajectory_params_file = PathJoinSubstitution([
         FindPackageShare('open_manipulator_bringup'),
         'config',
-        'omy_3m',
-        init_position_file,
+        'omx_f_follower_ai',
+        'initial_positions.yaml',
     ])
 
     # Define nodes
@@ -147,6 +150,7 @@ def generate_launch_description():
         arguments=[
             'arm_controller',
             'joint_state_broadcaster',
+            # 'gpio_command_controller',
         ],
         output='both',
         parameters=[{'robot_description': urdf_file}],
