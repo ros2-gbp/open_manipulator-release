@@ -1,0 +1,12 @@
+Source: ros-rolling-open-manipulator
+Section: misc
+Priority: optional
+Maintainer: Pyo <pyo@robotis.com>
+Build-Depends: debhelper (>= 9.0.0), ros-rolling-ament-cmake, ros-rolling-ros-workspace
+Homepage: http://wiki.ros.org/open_manipulator
+Standards-Version: 3.9.2
+
+Package: ros-rolling-open-manipulator
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-rolling-om-gravity-compensation-controller, ros-rolling-om-joint-trajectory-command-broadcaster, ros-rolling-om-spring-actuator-controller, ros-rolling-open-manipulator-bringup, ros-rolling-open-manipulator-collision, ros-rolling-open-manipulator-description, ros-rolling-open-manipulator-gui, ros-rolling-open-manipulator-moveit-config, ros-rolling-open-manipulator-playground, ros-rolling-open-manipulator-teleop, ros-rolling-ros-workspace
+Description: OpenMANIPULATOR meta ROS 2 package.
