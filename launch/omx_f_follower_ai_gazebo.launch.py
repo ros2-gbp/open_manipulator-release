@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# Author: Wonho Yun, Sungho Woo, Woojin Wie
+# Author: Wonho Yun, Sungho Woo, Woojin Wie, Junha Cha
 
 import os
 from pathlib import Path
@@ -32,7 +32,7 @@ from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
     declared_arguments = [
-        DeclareLaunchArgument('model', default_value='omy_f3m',
+        DeclareLaunchArgument('model', default_value='omx_f',
                               description='Robot model name.'),
         DeclareLaunchArgument('world', default_value='empty_world',
                               description='Gz sim World'),
@@ -75,13 +75,13 @@ def generate_launch_description():
         PathJoinSubstitution([FindPackageShare('open_manipulator_description'),
                               'urdf',
                               model,
-                              'omy_f3m.urdf.xacro']),
+                              'omx_f.urdf.xacro']),
         ' ',
         'model:=', model,
         ' ',
         'use_sim:=true',
         ' ',
-        'config_type:=omy_f3m_follower_ai'
+        'config_type:=omx_f_follower_ai'
     ])
 
     robot_description = {'robot_description': robot_description_content}
