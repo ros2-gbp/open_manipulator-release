@@ -1,0 +1,12 @@
+Source: ros-humble-open-manipulator-x-bringup
+Section: misc
+Priority: optional
+Maintainer: Pyo <pyo@robotis.com>
+Build-Depends: debhelper (>= 9.0.0), ros-humble-ament-cmake, ros-humble-ros-workspace
+Homepage: http://wiki.ros.org/open_manipulator
+Standards-Version: 3.9.2
+
+Package: ros-humble-open-manipulator-x-bringup
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-humble-gazebo-ros, ros-humble-gripper-controllers, ros-humble-open-manipulator-x-description, ros-humble-robot-state-publisher, ros-humble-ros2-control, ros-humble-ros2-controllers, ros-humble-rviz2, ros-humble-xacro, ros-humble-ros-workspace
+Description: OpenMANIPULATOR-X bringup ROS 2 package.
