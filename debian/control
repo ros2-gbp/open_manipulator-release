@@ -1,0 +1,12 @@
+Source: ros-rolling-open-manipulator-gui
+Section: misc
+Priority: optional
+Maintainer: Pyo <pyo@robotis.com>
+Build-Depends: debhelper (>= 9.0.0), libqt5core5a, libqt5gui5, qt5-qmake, qtbase5-dev, ros-rolling-ament-cmake, ros-rolling-eigen3-cmake-module, ros-rolling-geometry-msgs, ros-rolling-moveit-core, ros-rolling-moveit-msgs, ros-rolling-moveit-ros-planning, ros-rolling-moveit-ros-planning-interface, ros-rolling-rclcpp, ros-rolling-sensor-msgs, ros-rolling-std-msgs, ros-rolling-ros-workspace
+Homepage: http://wiki.ros.org/open_manipulator
+Standards-Version: 3.9.2
+
+Package: ros-rolling-open-manipulator-gui
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libqt5core5a, libqt5gui5, qt5-qmake, qtbase5-dev, ros-rolling-eigen3-cmake-module, ros-rolling-geometry-msgs, ros-rolling-moveit-core, ros-rolling-moveit-msgs, ros-rolling-moveit-ros-planning, ros-rolling-moveit-ros-planning-interface, ros-rolling-rclcpp, ros-rolling-sensor-msgs, ros-rolling-std-msgs, ros-rolling-ros-workspace
+Description: The OpenMANIPULATOR GUI ROS 2 package enables users to explore Joint Space, Task Space, and even work with the Task Constructor functionality.
