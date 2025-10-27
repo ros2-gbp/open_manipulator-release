@@ -2,6 +2,24 @@
 Changelog for package om_gravity_compensation_controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+4.1.0 (2025-10-24)
+-------------------
+* None
+
+4.0.10 (2025-10-23)
+-------------------
+* None
+
+4.0.9 (2025-09-15)
+------------------
+* None
+
+4.0.8 (2025-09-03)
+------------------
+* Added parameter for enabling spring effect
+* Added parameters about scaling factors for input joint velocities and accelerations
+* Contributors: Woojin Wie
+
 4.0.7 (2025-07-17)
 ------------------
 * None
