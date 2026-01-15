@@ -1,0 +1,12 @@
+Source: ros-jazzy-open-manipulator-moveit-config
+Section: misc
+Priority: optional
+Maintainer: Pyo <pyo@robotis.com>
+Build-Depends: debhelper (>= 9.0.0), ros-jazzy-ament-cmake, ros-jazzy-ros-workspace
+Homepage: http://wiki.ros.org/open_manipulator
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-open-manipulator-moveit-config
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jazzy-controller-manager, ros-jazzy-joint-state-publisher, ros-jazzy-joint-state-publisher-gui, ros-jazzy-moveit-configs-utils, ros-jazzy-moveit-kinematics, ros-jazzy-moveit-planners, ros-jazzy-moveit-ros-move-group, ros-jazzy-moveit-ros-visualization, ros-jazzy-moveit-ros-warehouse, ros-jazzy-moveit-setup-assistant, ros-jazzy-moveit-simple-controller-manager, ros-jazzy-open-manipulator-description, ros-jazzy-robot-state-publisher, ros-jazzy-rviz-common, ros-jazzy-rviz-default-plugins, ros-jazzy-rviz2, ros-jazzy-tf2-ros, ros-jazzy-warehouse-ros-sqlite, ros-jazzy-xacro, ros-jazzy-ros-workspace
+Description: An automatically generated package with all the configuration and launch files for using the open_manipulator_x with the MoveIt Motion Planning Framework
