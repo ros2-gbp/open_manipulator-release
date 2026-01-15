@@ -1,20 +1,26 @@
-# ROBOTIS OpenMANIPULATOR ROS 2 Packages
+# OpenMANIPULATOR-X
+<img src="https://github.com/ROBOTIS-GIT/emanual/blob/master/assets/images/platform/openmanipulator_x/OpenManipulator.png">
+<img src="https://github.com/ROBOTIS-GIT/emanual/blob/master/assets/images/platform/openmanipulator_x/OpenManipulator_Chain_Capture.png" width="500">
 
-This repository contains the official ROS 2 packages for the ROBOTIS OpenMANIPULATOR platform. These packages provide the necessary interfaces and tools to control the robot, integrate with its sensors, and develop physical AI applications, including those utilizing frameworks like LeRobot. For detailed usage instructions, please refer to the documentation below.
-  - [Documentation for OMY](https://ai.robotis.com/omy/introduction_omy.html)
-  - [Documentation for OpenMANIPULATOR-X](https://emanual.robotis.com/docs/en/platform/openmanipulator_x/overview/)
+The 4-DOF Open Manipulator-X now supports MoveIt 2, enabling enhanced motion planning and control for advanced robotic applications. This update also brings significant improvements to the teleoperation features, example use cases, and the graphical user interface (GUI), providing a more seamless and user-friendly experience for developers and researchers.
 
-To learn more about the Physical AI Tools, visit:
-  - [Physical AI Tools](https://github.com/ROBOTIS-GIT/physical_ai_tools)
+- Active Branches: noetic, humble, jazzy, main
+- Legacy Branches: *-devel
 
-To explore our open-source platforms in a simulation environment, visit:
-  - [Simulation Models](https://github.com/ROBOTIS-GIT/robotis_mujoco_menagerie)
+# ROBOTIS e-Manual for OpenMANIPULATOR-X
+- [http://emanual.robotis.com/docs/en/platform/openmanipulator/](http://emanual.robotis.com/docs/en/platform/openmanipulator/)
 
-For usage instructions and demonstrations of the OpenMANIPULATOR, check out:
-  - [Tutorial Videos](https://www.youtube.com/@ROBOTISOpenSourceTeam)
+# Open Source related to OpenMANIPULATOR-X
+- [open_manipulator](https://github.com/ROBOTIS-GIT/open_manipulator)
+- [open_manipulator_y](https://github.com/ROBOTIS-GIT/open_manipulator_y)
+- [open_manipulator_p](https://github.com/ROBOTIS-GIT/open_manipulator_p)
+- [dynamixel_sdk](https://github.com/ROBOTIS-GIT/DynamixelSDK)
+- [dynamixel_workbench](https://github.com/ROBOTIS-GIT/dynamixel-workbench)
+- [dynamixel_hardware_interface](https://github.com/ROBOTIS-GIT/dynamixel_hardware_interface)
 
-To access datasets and pre-trained models for our open-source platforms, see:
-  - [AI Models & Datasets](https://huggingface.co/ROBOTIS)
-
-To use the Docker image for running ROS packages and Physical AI tools with the OpenMANIPULATOR, visit:
-  - [Docker Images](https://hub.docker.com/r/robotis/ros/tags)
+# Documents and Videos related to OpenMANIPULATOR-X
+- [ROBOTIS e-Manual for OpenMANIPULATOR-X](http://emanual.robotis.com/docs/en/platform/openmanipulator/)
+- [ROBOTIS e-Manual for OpenMANIPULATOR-P](https://emanual.robotis.com/docs/en/platform/openmanipulator_p/overview/)
+- [ROBOTIS e-Manual for DYNAMIXEL SDK](http://emanual.robotis.com/docs/en/software/dynamixel/dynamixel_sdk/overview/)
+- [ROBOTIS e-Manual for DYNAMIXEL Workbench](http://emanual.robotis.com/docs/en/software/dynamixel/dynamixel_workbench/)
+- [YouTube Play List for OpenMANIPULATOR](https://www.youtube.com/playlist?list=PLRG6WP3c31_WpEsB6_Rdt3KhiopXQlUkb)
