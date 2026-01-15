@@ -4,24 +4,34 @@ name: CI
 # Specifies the events that trigger the workflow
 on:
   push:
-    branches: [ humble ]
+    branches: [ jazzy, main ]
   pull_request:
-    branches: [ humble ]
+    branches: [ jazzy, main ]
 
 # Defines a set of jobs to be run as part of the workflow
 jobs:
   # The name of the job
   ROS_CI:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         ros_distribution:
-          - humble
+          # - humble
+          - jazzy
+          - rolling
         include:
           # ROS 2 Humble Hawksbill
-          - docker_image: ubuntu:jammy
-            ros_distribution: humble
+          # - docker_image: ubuntu:jammy
+          #   ros_distribution: humble
+          #   ros_version: 2
+          # ROS 2 Jazzy Jalisco
+          - docker_image: ubuntu:noble
+            ros_distribution: jazzy
+            ros_version: 2
+          # ROS 2 Rolling Ridley
+          - docker_image: ubuntu:noble
+            ros_distribution: rolling
             ros_version: 2
     container:
       image: ${{ matrix.docker_image }}
@@ -47,9 +57,9 @@ jobs:
           echo "--- Updating rosdep definitions ---"
           rosdep update
           echo "--- Installing system dependencies for ROS 2 ${{ matrix.ros_distribution }} ---"
-          rosdep install --from-paths ros_ws/src --ignore-src -y -r --rosdistro ${{ matrix.ros_distribution }}
+          rosdep install --from-paths ros_ws/src --ignore-src -y -r --rosdistro ${{ matrix.ros_distribution }} --skip-keys dynamixel_hardware_interface
           echo "--- Performing rosdep check for ROS 2 ${{ matrix.ros_distribution }} ---"
-          if rosdep check --from-paths ros_ws/src --ignore-src --rosdistro ${{ matrix.ros_distribution }}; then
+          if rosdep check --from-paths ros_ws/src --ignore-src --rosdistro ${{ matrix.ros_distribution }} --skip-keys dynamixel_hardware_interface; then
             echo "--- rosdep check passed ---"
           else
             echo "--- rosdep check failed: Missing system dependencies or unresolvable keys. ---"
@@ -61,12 +71,16 @@ jobs:
 
         with:
           target-ros2-distro: ${{ matrix.ros_distribution }}
-          vcs-repo-file-url: ""
+          vcs-repo-file-url: "https://raw.githubusercontent.com/ROBOTIS-GIT/open_manipulator/${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}/open_manipulator_ci.repos"
           package-name: |
             open_manipulator
-            open_manipulator_x_bringup
-            open_manipulator_x_description
-            open_manipulator_x_gui
-            open_manipulator_x_moveit_config
-            open_manipulator_x_playground
-            open_manipulator_x_teleop
+            open_manipulator_bringup
+            open_manipulator_collision
+            open_manipulator_description
+            open_manipulator_gui
+            open_manipulator_moveit_config
+            open_manipulator_playground
+            open_manipulator_teleop
+            om_gravity_compensation_controller
+            om_joint_trajectory_command_broadcaster
+            om_spring_actuator_controller

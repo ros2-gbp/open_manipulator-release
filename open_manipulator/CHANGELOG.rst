@@ -2,32 +2,135 @@
 Changelog for package open_manipulator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-3.0.4 (2025-07-15)
+4.1.2 (2026-01-09)
 ------------------
-* Changed the output path of the Qt5-generated header file (ui_main_window.h) by adding a custom command in CMake. The generated file is now copied to a structured subdirectory (gui_headers/) within the build directory to improve include path consistency and comply with linting rules
-* Contributors: Hyungyu Kim
+* Add urdf for every model
+* Contributors: Woojin Wie
 
-3.0.3 (2025-07-10)
+4.1.1 (2025-11-13)
 ------------------
-* Fixed an issue where meshes were not loading in the Gazebo simulation by adding the Gazebo model path export
-* Linted the codebase
-* Contributors: Hyungyu Kim
+* Update for new DHI, mock_components
+* Update for docker-compose.yml to use host IPC and PID and shared memory
+* Update gazebo plugin parameters for omx_l
+* Updated for new realtime_tools::RealtimePublisher API
+* Updated Dockerfile for DHI
+* Contributors: Woojin Wie, Heewon Lee
 
-3.0.2 (2025-06-20)
+4.1.0 (2025-10-24)
 ------------------
-* Removed unnecessary dependencies
+* Support OMX-F GUI
+* Support OMX-F Keyboard Teleop
+* Contributors: Heewon Lee
+
+4.0.10 (2025-10-23)
+-------------------
+* Changed default drive mode to 0 for OMX-L
+* Contributors: Woojin Wie
+
+4.0.9 (2025-09-15)
+------------------
+* Support custom camera namespace and connection
+* Contributors: Junha Cha
+
+4.0.8 (2025-09-03)
+------------------
+* Added camera_usb_cam launch file
+* Support OMX series
+* Removed unused use_sim_time parameter in the configuration files
+* Added OMY-F3M Leader and OMY-L100 Follower configuration files
+* Renamed ros2_control files to include operating mode
+* Added parameter for enabling spring effect
+* Added parameters about scaling factors for input joint velocities and accelerations
+* Added usb-cam package dependency in Dockerfile
+* Contributors: Woojin Wie, Junha Cha, Wonho Yun
+
+4.0.7 (2025-07-17)
+------------------
+* Fixed joint offset functionality of joint trajectory command broadcaster
+* Updated launch files for OMY Packing and Unpacking
+* Contributors: Woojin Wie
+
+4.0.6 (2025-07-15)
+------------------
+* Renamed omx to open_manipulator_x
 * Contributors: Wonho Yun
 
-3.0.1 (2025-04-11)
+4.0.5 (2025-07-02)
 ------------------
-* Modified Update Rate
-* Docker support
-* Contributors: Wonho Yun, Woojin Wie
+* Added init_position_file argument to launch files
+* Updated profile time and acceleration time for OMY series
+* Fixed lint errors
+* Updated Collision area for OMY series
+* Added feedback control for leader-follower synchronization
+* Contributors: Woojin Wie, Sungho Woo
+
+4.0.4 (2025-06-26)
+------------------
+* Added udev rule apply logic to container.sh
+* Contributors: Woojin Wie
+
+4.0.3 (2025-06-25)
+------------------
+* Changed Dockerfile to use pre-built librealsense image
+* Contributors: Woojin Wie
+
+4.0.2 (2025-06-25)
+------------------
+* Fixed launch file paths for OMY-3M and OMY-F3M
+* Contributors: Woojin Wie
+
+4.0.1 (2025-06-23)
+------------------
+* Changed default dynamixel profile configuration to use time-based profile for all OM Series
+* Contributors: Woojin Wie
+
+4.0.0 (2025-06-19)
+------------------
+* Refactored the package to support the new OMY-3M, OMY-F3M, OMY-L100
+* Contributors: Woojin Wie, Wonho Yun
+
+3.3.0 (2025-06-10)
+------------------
+* Added self-collision functionality to OMY Follower
+* Contributors: Sungho Woo
+
+3.2.4 (2025-05-30)
+------------------
+* Modified ROS2 controller package dependencies
+* Fixed stderr output handling
+* Deprecate ament_include_dependency usage in CMakeLists.txt
+* Contributors: Wonho Yun
+
+3.2.3 (2025-05-07)
+------------------
+* Updated udev settings for improved device recognition
+* Contributors: Wonho Yun
+
+3.2.2 (2025-04-17)
+------------------
+* Optimized ROS2 control configurations for better performance
+* Handle lint errors
+* Contributors: Woojin Wie
+
+3.2.1 (2025-04-11)
+------------------
+* Updated link mesh files in the OM-Y leader mesh directory
+* Contributors: Woojin Wie
+
+3.2.0 (2025-04-09)
+------------------
+* Updated OM-Y Follower for improved joint initialization and action-based ROS2 control
+* Contributors: Woojin Wie
+
+3.1.0 (2025-03-17)
+------------------
+* Integrate OM-X, OM-Y, and OM-Teleoperation with Jazzy support and Gazebo Harmonic compatibility
+* Contributors: Sungho Woo
 
 3.0.0 (2024-12-06)
 ------------------
 * Refactored OM-X for compatibility with MoveIt 2
-* Contributors: Wonho Yun, Sungho Woo
+* Contributors: Wonho Yoon, Sungho Woo
 
 2.3.0 (2021-10-06)
 ------------------
