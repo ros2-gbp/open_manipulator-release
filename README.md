@@ -1,3 +1,33 @@
+## open_manipulator (humble) - 3.0.4-3
+
+The packages in the `open_manipulator` repository were released into the `humble` distro by running `/usr/bin/bloom-release open_manipulator -t humble -r humble --edit` on `Thu, 15 Jan 2026 07:31:18 -0000`
+
+These packages were released:
+- `open_manipulator`
+- `open_manipulator_x_bringup`
+- `open_manipulator_x_description`
+- `open_manipulator_x_gui`
+- `open_manipulator_x_moveit_config`
+- `open_manipulator_x_playground`
+- `open_manipulator_x_teleop`
+
+Version of package(s) in repository `open_manipulator`:
+
+- upstream repository: https://github.com/ROBOTIS-GIT/open_manipulator.git
+- release repository: https://github.com/ros2-gbp/open_manipulator-release.git
+- rosdistro version: `3.0.4-1`
+- old version: `3.0.4-2`
+- new version: `3.0.4-3`
+
+Versions of tools used:
+
+- bloom version: `0.13.0`
+- catkin_pkg version: `1.1.0`
+- rosdep version: `0.26.0`
+- rosdistro version: `1.0.1`
+- vcstools version: `0.1.42`
+
+
 ## open_manipulator (rolling) - 4.1.0-1
 
 The packages in the `open_manipulator` repository were released into the `rolling` distro by running `/usr/bin/bloom-release open_manipulator -t rolling -r rolling --edit` on `Mon, 27 Oct 2025 09:14:39 -0000`
