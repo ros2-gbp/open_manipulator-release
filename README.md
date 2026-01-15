@@ -1,3 +1,37 @@
+## open_manipulator (kilted) - 4.1.2-1
+
+The packages in the `open_manipulator` repository were released into the `kilted` distro by running `/usr/bin/bloom-release open_manipulator -t kilted -r kilted --edit` on `Thu, 15 Jan 2026 11:47:10 -0000`
+
+These packages were released:
+- `om_gravity_compensation_controller`
+- `om_joint_trajectory_command_broadcaster`
+- `om_spring_actuator_controller`
+- `open_manipulator`
+- `open_manipulator_bringup`
+- `open_manipulator_collision`
+- `open_manipulator_description`
+- `open_manipulator_gui`
+- `open_manipulator_moveit_config`
+- `open_manipulator_playground`
+- `open_manipulator_teleop`
+
+Version of package(s) in repository `open_manipulator`:
+
+- upstream repository: https://github.com/ROBOTIS-GIT/open_manipulator.git
+- release repository: https://github.com/ros2-gbp/open_manipulator-release.git
+- rosdistro version: `4.1.0-1`
+- old version: `4.1.0-1`
+- new version: `4.1.2-1`
+
+Versions of tools used:
+
+- bloom version: `0.13.0`
+- catkin_pkg version: `1.1.0`
+- rosdep version: `0.26.0`
+- rosdistro version: `1.0.1`
+- vcstools version: `0.1.42`
+
+
 ## open_manipulator (jazzy) - 4.1.2-1
 
 The packages in the `open_manipulator` repository were released into the `jazzy` distro by running `/usr/bin/bloom-release open_manipulator -t jazzy -r jazzy --edit` on `Thu, 15 Jan 2026 10:21:35 -0000`
