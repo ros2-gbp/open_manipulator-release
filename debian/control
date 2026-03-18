@@ -1,0 +1,12 @@
+Source: ros-jazzy-open-manipulator-playground
+Section: misc
+Priority: optional
+Maintainer: Pyo <pyo@robotis.com>
+Build-Depends: debhelper (>= 9.0.0), ros-jazzy-ament-cmake, ros-jazzy-moveit-ros-planning-interface, ros-jazzy-rclcpp, ros-jazzy-ros-workspace
+Homepage: http://wiki.ros.org/open_manipulator
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-open-manipulator-playground
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jazzy-moveit-ros-planning-interface, ros-jazzy-rclcpp, ros-jazzy-ros-workspace
+Description: This package provides an example for utilizing the MoveIt API with the OpenMANIPULATOR, allowing users to practice and experiment freely.
