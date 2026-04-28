@@ -104,5 +104,4 @@ tracks:
     ros_distro: rolling
     vcs_type: git
     vcs_uri: https://github.com/ROBOTIS-GIT/open_manipulator.git
-    version: 4.1.2
-    version_saved: :{auto}
+    version: :{auto}
