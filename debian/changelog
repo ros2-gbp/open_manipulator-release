@@ -1,0 +1,137 @@
+ros-rolling-om-joint-trajectory-command-broadcaster (4.1.2-2resolute) resolute; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Fri, 09 Jan 2026 06:00:00 -0000
+
+ros-rolling-om-joint-trajectory-command-broadcaster (4.1.1-2resolute) resolute; urgency=high
+
+  * Updated for new realtime_tools::RealtimePublisher API
+  * Contributors: Woojin Wie
+
+ -- Pyo <pyo@robotis.com>  Thu, 13 Nov 2025 06:00:00 -0000
+
+ros-rolling-om-joint-trajectory-command-broadcaster (4.1.0-2resolute) resolute; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Fri, 24 Oct 2025 05:00:00 -0000
+
+ros-rolling-om-joint-trajectory-command-broadcaster (4.0.10-2resolute) resolute; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Thu, 23 Oct 2025 05:00:00 -0000
+
+ros-rolling-om-joint-trajectory-command-broadcaster (4.0.9-2resolute) resolute; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Mon, 15 Sep 2025 05:00:00 -0000
+
+ros-rolling-om-joint-trajectory-command-broadcaster (4.0.8-2resolute) resolute; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Wed, 03 Sep 2025 05:00:00 -0000
+
+ros-rolling-om-joint-trajectory-command-broadcaster (4.0.7-2resolute) resolute; urgency=high
+
+  * Fixed joint offset functionality of joint trajectory command broadcaster
+  * Contributors: Woojin Wie
+
+ -- Pyo <pyo@robotis.com>  Thu, 17 Jul 2025 05:00:00 -0000
+
+ros-rolling-om-joint-trajectory-command-broadcaster (4.0.6-2resolute) resolute; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Tue, 15 Jul 2025 05:00:00 -0000
+
+ros-rolling-om-joint-trajectory-command-broadcaster (4.0.5-2resolute) resolute; urgency=high
+
+  * Fixed lint errors
+  * Contributors: Sungho Woo
+
+ -- Pyo <pyo@robotis.com>  Wed, 02 Jul 2025 05:00:00 -0000
+
+ros-rolling-om-joint-trajectory-command-broadcaster (4.0.4-2resolute) resolute; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Thu, 26 Jun 2025 05:00:00 -0000
+
+ros-rolling-om-joint-trajectory-command-broadcaster (4.0.3-2resolute) resolute; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Wed, 25 Jun 2025 05:00:00 -0000
+
+ros-rolling-om-joint-trajectory-command-broadcaster (4.0.2-2resolute) resolute; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Wed, 25 Jun 2025 05:00:00 -0000
+
+ros-rolling-om-joint-trajectory-command-broadcaster (4.0.1-2resolute) resolute; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Mon, 23 Jun 2025 05:00:00 -0000
+
+ros-rolling-om-joint-trajectory-command-broadcaster (4.0.0-2resolute) resolute; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Thu, 19 Jun 2025 05:00:00 -0000
+
+ros-rolling-om-joint-trajectory-command-broadcaster (3.3.0-2resolute) resolute; urgency=high
+
+  * Added self-collision functionality to OMY Follower
+  * Contributors: Sungho Woo
+
+ -- Pyo <pyo@robotis.com>  Tue, 10 Jun 2025 05:00:00 -0000
+
+ros-rolling-om-joint-trajectory-command-broadcaster (3.2.4-2resolute) resolute; urgency=high
+
+  * Modified ROS2 controller package dependencies
+  * Fixed stderr output handling
+  * Deprecate ament_include_dependency usage in CMakeLists.txt
+  * Contributors: Wonho Yun
+
+ -- Pyo <pyo@robotis.com>  Fri, 30 May 2025 05:00:00 -0000
+
+ros-rolling-om-joint-trajectory-command-broadcaster (3.2.3-2resolute) resolute; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Wed, 07 May 2025 05:00:00 -0000
+
+ros-rolling-om-joint-trajectory-command-broadcaster (3.2.2-2resolute) resolute; urgency=high
+
+  * Handle lint errors
+  * Contributors: Woojin Wie
+
+ -- Pyo <pyo@robotis.com>  Thu, 17 Apr 2025 05:00:00 -0000
+
+ros-rolling-om-joint-trajectory-command-broadcaster (3.2.1-2resolute) resolute; urgency=high
+
+  * None
+
+ -- Pyo <pyo@robotis.com>  Fri, 11 Apr 2025 05:00:00 -0000
+
+ros-rolling-om-joint-trajectory-command-broadcaster (3.2.0-2resolute) resolute; urgency=high
+
+  * Updated OM-Y Follower for improved joint initialization and action-based ROS2 control
+  * Contributors: Woojin Wie
+
+ -- Pyo <pyo@robotis.com>  Wed, 09 Apr 2025 05:00:00 -0000
+
+ros-rolling-om-joint-trajectory-command-broadcaster (3.1.0-2resolute) resolute; urgency=high
+
+  * Compensated for gravity in a robot arm. It uses the KDL library to compute the torques required to maintain the arm in a desired position.
+  * Contributors: Woojin Wie
+
+ -- Pyo <pyo@robotis.com>  Mon, 17 Mar 2025 05:00:00 -0000
+
+
