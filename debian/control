@@ -1,0 +1,12 @@
+Source: ros-lyrical-open-manipulator-bringup
+Section: misc
+Priority: optional
+Maintainer: Pyo <pyo@robotis.com>
+Build-Depends: debhelper (>= 9.0.0), ros-lyrical-dynamixel-hardware-interface, ros-lyrical-rclpy, ros-lyrical-ros-gz-bridge, ros-lyrical-ros-gz-image, ros-lyrical-ros-gz-sim, ros-lyrical-ros-workspace, python3-all, python3-setuptools, dh-python
+Homepage: http://wiki.ros.org/open_manipulator
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-open-manipulator-bringup
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, ros-lyrical-dynamixel-hardware-interface, ros-lyrical-gz-ros2-control, ros-lyrical-open-manipulator-description, ros-lyrical-rclpy, ros-lyrical-robot-state-publisher, ros-lyrical-ros-gz-bridge, ros-lyrical-ros-gz-image, ros-lyrical-ros-gz-sim, ros-lyrical-ros2-control, ros-lyrical-ros2-controllers, ros-lyrical-rviz2, ros-lyrical-xacro, ros-lyrical-ros-workspace
+Description: OpenMANIPULATOR bringup ROS 2 package.
