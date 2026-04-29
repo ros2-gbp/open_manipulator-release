@@ -1,0 +1,12 @@
+Source: ros-lyrical-om-gravity-compensation-controller
+Section: misc
+Priority: optional
+Maintainer: Pyo <pyo@robotis.com>
+Build-Depends: debhelper (>= 9.0.0), ros-lyrical-ament-cmake, ros-lyrical-angles, ros-lyrical-backward-ros, ros-lyrical-control-msgs, ros-lyrical-control-toolbox, ros-lyrical-controller-interface, ros-lyrical-generate-parameter-library, ros-lyrical-hardware-interface, ros-lyrical-kdl-parser, ros-lyrical-pluginlib, ros-lyrical-rclcpp, ros-lyrical-rclcpp-lifecycle, ros-lyrical-realtime-tools, ros-lyrical-rsl, ros-lyrical-tl-expected, ros-lyrical-urdf, ros-lyrical-ros-workspace
+Homepage: https://index.ros.org/p/om_gravity_compensation_controller/#lyrical
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-om-gravity-compensation-controller
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lyrical-angles, ros-lyrical-backward-ros, ros-lyrical-control-msgs, ros-lyrical-control-toolbox, ros-lyrical-controller-interface, ros-lyrical-generate-parameter-library, ros-lyrical-hardware-interface, ros-lyrical-kdl-parser, ros-lyrical-pluginlib, ros-lyrical-rclcpp, ros-lyrical-rclcpp-lifecycle, ros-lyrical-realtime-tools, ros-lyrical-rsl, ros-lyrical-tl-expected, ros-lyrical-urdf, ros-lyrical-ros-workspace
+Description: Controller for compensating for gravity on a group of joints
