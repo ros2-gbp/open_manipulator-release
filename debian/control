@@ -1,0 +1,12 @@
+Source: ros-lyrical-open-manipulator-description
+Section: misc
+Priority: optional
+Maintainer: Pyo <pyo@robotis.com>
+Build-Depends: debhelper (>= 9.0.0), ros-lyrical-ament-cmake, ros-lyrical-ros-workspace
+Homepage: http://wiki.ros.org/open_manipulator
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-open-manipulator-description
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lyrical-joint-state-publisher, ros-lyrical-joint-state-publisher-gui, ros-lyrical-robot-state-publisher, ros-lyrical-rviz2, ros-lyrical-ros-workspace
+Description: open_manipulator_description ROS 2 package.
