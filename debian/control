@@ -1,0 +1,12 @@
+Source: ros-lyrical-open-manipulator-teleop
+Section: misc
+Priority: optional
+Maintainer: Pyo <pyo@robotis.com>
+Build-Depends: debhelper (>= 9.0.0), ros-lyrical-control-msgs, ros-lyrical-rclpy, ros-lyrical-sensor-msgs, ros-lyrical-std-msgs, ros-lyrical-trajectory-msgs, ros-lyrical-ros-workspace, python3-all, python3-setuptools, dh-python
+Homepage: https://index.ros.org/p/open_manipulator_teleop/#lyrical
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-open-manipulator-teleop
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, ros-lyrical-control-msgs, ros-lyrical-rclpy, ros-lyrical-sensor-msgs, ros-lyrical-std-msgs, ros-lyrical-trajectory-msgs, ros-lyrical-ros-workspace
+Description: OpenManipulator teleoperation package
